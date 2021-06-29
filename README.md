@@ -36,7 +36,7 @@
 
 7. 模拟器或真机测试
 
-   ![搜狗截图20210629181520](C:\Users\admin\Desktop\搜狗截图20210629181520.png)
+   ![搜狗截图20210629181520](https://ppgjx.com/static/github/img/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE.png)
 
    
 
@@ -44,11 +44,11 @@
 
 1. 根目录结构
 
-   ![搜狗截图20210629183505](C:\Users\admin\Desktop\搜狗截图20210629183505.png)
+   ![搜狗截图20210629183505](https://ppgjx.com/static/github/img/%E6%A0%B9%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png)
 
 2. pages 目录有两个子目录functions 和index  对应app功能栏 功能 - 我
 
    1.  functions的每个子目录对应一个小工具
    2.  index目录为用户目录 用户注册 登录 反馈 均写在这里
 
-   ![搜狗截图20210629184015](C:\Users\admin\Desktop\搜狗截图20210629184015.png)
+   ![搜狗截图20210629184015](https://ppgjx.com/static/github/img/%E6%A0%B8%E5%BF%83%E7%9B%AE%E5%BD%95.png)
