@@ -1,0 +1,226 @@
+@charset "utf-8";
+/** Function Definitions **/
+/** Basic Styles **/
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1;
+  color: #666;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+/** Speedometer Styles **/
+.speedometer-container {
+  width: 48rem;
+  height: 48rem;
+  position: relative;
+  background-color: #000;
+  box-shadow: 0 0 10rem rgba(0,0,0,0.75);
+}
+.speedometer-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at top left, #fff, transparent);
+  opacity: 0.12;
+}
+.overlay {
+  pointer-events: none;
+}
+.overlay::before,
+.overlay::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.overlay::before {
+  background-image: radial-gradient(circle at top left, #25fabb, transparent);
+  opacity: 0.04;
+}
+.overlay::after {
+  background-image: radial-gradient(circle at bottom right, #874bd7, transparent);
+  opacity: 0.2;
+}
+.speedometer .inner-ring {
+  width: 21rem;
+  height: 21rem;
+  position: absolute;
+  top: calc(50% - 12.5rem);
+  left: calc(50% - 10.5rem);
+}
+.speedometer .inner-ring::before,
+.speedometer .inner-ring::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid transparent;
+  border-top: 2px solid #3b3d45;
+  border-right: 2px solid #3b3d45;
+  border-radius: 50%;
+}
+.speedometer .inner-ring::before {
+  -webkit-transform: rotate(-75deg);
+          transform: rotate(-75deg);
+}
+.speedometer .inner-ring::after {
+  -webkit-transform: rotate(-15deg);
+          transform: rotate(-15deg);
+}
+.speedometer .outer-ring {
+  width: 32rem;
+  height: 32rem;
+  position: absolute;
+  top: calc(50% - 18rem);
+  left: calc(50% - 16rem);
+  border-radius: 50%;
+}
+.speedometer .digit-ring {
+  position: absolute;
+  top: calc(50% - 2rem);
+  left: 50%;
+}
+.speedometer .tick {
+  width: 0.8rem;
+  border-top: 2px solid #3b3d45;
+  position: absolute;
+  top: calc(50% - 0.1rem);
+  left: calc(50% - 0.4rem);
+}
+.speedometer .tick:nth-child(6n+1) {
+  width: 1.6rem;
+  left: calc(50% - 0.8rem);
+  border-color: #787a81;
+}
+.speedometer .digit {
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  top: calc(50% - 1rem);
+  left: calc(50% - 1rem);
+  font-weight: bold;
+  text-align: center;
+  line-height: 2rem;
+}
+.speedometer .details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 21rem;
+  height: 21rem;
+  position: absolute;
+  top: calc(50% - 12.5rem);
+  left: calc(50% - 10.5rem);
+}
+.speedometer .label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.speedometer .speed {
+  font-size: 6rem;
+  color: #fff;
+}
+.speedometer .unit {
+  font-size: 1.6rem;
+}
+.speedometer .progress {
+  width: 21rem;
+  height: 21rem;
+  position: absolute;
+  top: calc(50% - 12.5rem);
+  left: calc(50% - 10.5rem);
+  border-radius: 50%;
+}
+.speedometer .progress::before {
+  content: "";
+  position: absolute;
+  top: -0.2rem;
+  left: calc(50% - 0.3rem);
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background-color: #f1252e;
+  box-shadow: 0 0 6rem 2rem rgba(241,37,46,0.35);
+}
+.speedometer .retry-button {
+  width: 10rem;
+  border: 2px solid #3b3d45;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  position: absolute;
+  left: calc(50% - 5rem);
+  bottom: 13.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 3rem;
+  color: #666;
+  border-radius: 3rem;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 250ms ease-out;
+}
+.speedometer .retry-button:hover,
+.speedometer .retry-button:focus {
+  background-color: rgba(59,61,69,0.15);
+}
+.speedometer footer {
+  display: flex;
+  justify-content: center;
+  padding: 3.5rem 0;
+  position: absolute;
+  top: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.speedometer .stat {
+  flex-grow: 1;
+  width: 0;
+  padding: 1rem 0;
+  text-align: center;
+}
+.speedometer .stat:not(:last-child) {
+  border-right: 2px solid rgba(255,255,255,0.05);
+}
+.speedometer .stat label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.speedometer .stat p {
+  font-size: 1.4rem;
+  color: #fff;
+}
