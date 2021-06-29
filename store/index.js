@@ -229,6 +229,15 @@ const store = new Vuex.Store({
 						describe: '端口扫描',
 						display: true,
 						platform: 0
+					},
+					{
+						title: '快递查询',
+						name: '/pages/functions/expressCheck/expressCheck', 
+						color: 'pic',    
+						cuIcon: 'searchlist',  
+						describe: '快递查询',
+						display: true,
+						platform: 0
 					}
 				],
 				flashlightIndex: 0,

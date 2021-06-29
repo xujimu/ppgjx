@@ -398,6 +398,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/functions/expressCheck/expressCheck",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "快递查询",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",

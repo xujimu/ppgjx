@@ -1,3 +1,8 @@
+<!-- 
+	2021/6/29
+	xjm
+	2524931333@qq.com 
+-->
 <template>
 	<view>
 		<u-tag v-if="isShow"  style="width: 100%;text-align: center;"  text="您未开启通知 即使打开在线状态 也不会在列表中看到您"   type="warning" ></u-tag>

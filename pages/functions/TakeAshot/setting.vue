@@ -1,3 +1,8 @@
+<!-- 
+	2021/6/29
+	xjm
+	2524931333@qq.com 
+-->
 <template>
 	<view>
 		<view  class="cu-list menu sm-border" style="margin-top: 0px;margin-bottom: 1px;">

@@ -1,5 +1,8 @@
-
-
+<!-- 
+	2021/6/29
+	xjm
+	2524931333@qq.com 
+-->
 <template>
 	<view class="qiun-columns bg-white">
 		<view class="qiun-charts" >

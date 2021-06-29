@@ -158,7 +158,7 @@
 				 version: _self.$store.state.version ,
 				 //这里返回值不是真正的null而是字符串null有点坑
 				 cid: cid,
-				 access: '服务器加密秘钥协作开发者无需修改'
+				 access: '' //服务器加密秘钥协作开发者无需修改
 			  }
 			  
 			  console.log("发送请求拦截前",config)	

@@ -1,3 +1,8 @@
+<!-- 
+	2021/6/29
+	xjm
+	2524931333@qq.com 
+-->
 <template>
 	<view>
 		<view style="text-align: center;border-radius: 20upx;margin: 60upx 50upx;background-color: #333333;height: 400upx;">
