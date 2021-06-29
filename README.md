@@ -11,15 +11,44 @@
 
 1. 下载开发工具Hbuilder https://www.dcloud.io/hbuilderx.html 为了不必要的麻烦 统一使用正式版v3.1.18 APP开发版
 
-2. node.js 版本 v10.8.0 npm  版本 6.2.0 建议使用相同版本 
+2. 安装 node.js 版本 v10.8.0 npm  版本 6.2.0 建议使用相同版本 
 
 3. 安装git
 
 4. 克隆
 
    ```
-   
+    git clone https://github.com/xujimu/ppgjx.git
    ```
 
+
+5. 安装uview 在项目的根目录执行
+
+   ```
+   npm install uview-ui
+   ```
+
+6. 为Hbuilder安装 sass插件 (使用HBuilderX导入插件即可) 安装后重启HBuilder
+
+   ```
+   https://ext.dcloud.net.cn/plugin?name=compile-node-sass
+   ```
+
+7. 模拟器或真机测试
+
+   ![搜狗截图20210629181520](C:\Users\admin\Desktop\搜狗截图20210629181520.png)
+
    
 
+# 架构
+
+1. 根目录结构
+
+   ![搜狗截图20210629183505](C:\Users\admin\Desktop\搜狗截图20210629183505.png)
+
+2. pages 目录有两个子目录functions 和index  对应app功能栏 功能 - 我
+
+   1.  functions的每个子目录对应一个小工具
+   2.  index目录为用户目录 用户注册 登录 反馈 均写在这里
+
+   ![搜狗截图20210629184015](C:\Users\admin\Desktop\搜狗截图20210629184015.png)
