@@ -22,7 +22,8 @@
 				<u-cell-item icon="gift" title="期望功能"  @click="navto('/pages/index/function')"></u-cell-item>
 				<u-cell-item  icon="order" title="BUG反馈" @click="navto('/pages/index/feedback')"></u-cell-item>
 				<u-cell-item icon="thumb-up" title="App Store评分" @click="appStore()" v-if="ios"></u-cell-item>
-				 <u-cell-item  icon="setting" title="设置" @click="navto('/pages/index/setting/setting')"></u-cell-item>
+				<u-cell-item  icon="setting" title="设置" @click="navto('/pages/index/setting/setting')"></u-cell-item>
+				 <u-cell-item  icon="github-circle-fill" title="开发者协作计划" @click="navto('/pages/index/github')"></u-cell-item>
 			</u-cell-group>
 		</view>
 		

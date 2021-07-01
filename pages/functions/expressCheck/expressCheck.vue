@@ -10,27 +10,49 @@
 		</view>
 		<view class="padding-xl" >
 			<button :disabled="number != '' ? false:true" class="cu-btn block lg bg-white" @click="query()">
-				<text ></text>查询</button>
+				<text class="cuIcon-command" ></text>查询</button>
 		</view>
-		<u-divider style="height: 80rpx;" >当前状态:{{data.state}}</u-divider>
-		
-		<view v-for="(item,index) in data.info">
-			<view>{{item.time}}</view>
-			<view>{{item.content}}</view>
-		</view>
+		<logistics v-if="wlInfo" :wlInfo="wlInfo"></logistics>
 	</view>
 </template>
 
 <script>
 	var _self
+	import logistics from '@/components/xinyu-logistics/xinyu-logistics.vue'
 	export default {
+		components: { logistics ,
+		},
 		onLoad() {
-			_self = this
+			_self = this 
+			
+		},
+		onShow() {
+			uni.getClipboardData({
+				success: function(res) {
+					var value = res.data
+					if(value != ''){
+						uni.showModal({
+							title: '提示',
+							content: '检测到内容!是否粘贴并查询?',
+							success: function(res) {
+								if (res.confirm) {
+									_self.number = value
+									_self.query();
+								} else if (res.cancel) {
+									console.log('用户点击取消');
+								}
+							}
+						});
+					}
+					
+				}
+			});
 		},
 		data() {
 			return {
 				number: '',
-				data:{time:'',content:'',info:[]}
+				data:{time:'',content:'',info:[]},
+				wlInfo: ''
 			}
 		},
 		methods: {
@@ -49,7 +71,10 @@
 						'Content-Type':'application/x-www-form-urlencoded'
 					}
 				}).then(res => {
-					_self.data = res.data.data
+					console.log(res.data.data)
+					if(res.data.code == 0){
+						_self.wlInfo = res.data.data
+					}
 					uni.hideLoading(); 
 				}).catch(err => {
 					uni.hideLoading(); 
