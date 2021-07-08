@@ -417,6 +417,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/index/setting/agreement",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "服务协议",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
