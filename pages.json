@@ -425,6 +425,43 @@
                 "enablePullDownRefresh": false
             }
             
+        },
+        {
+            "path" : "pages/functions/chatRoom/chatRoom",
+            "style" : {
+        		"navigationBarTitleText":"聊天室",
+            	"navigationBarBackgroundColor":"#f2f2f2",
+            	"backgroundColorTop":"#e5e5e5",
+            	"backgroundColorBottom":"#e5e5e5",
+            	"app-plus":{
+            		"softinputNavBar":"none",
+            		"bounce":"none"
+            	}
+            }
+        }
+        ,{
+            "path" : "pages/functions/chatRoom/HM-details",
+            "style" : {
+        		"navigationBarBackgroundColor":"#cf3c35",
+        		"navigationBarTextStyle":"white",
+        		"navigationBarTitleText":"红包",
+        		"backgroundColorTop":"#cf3c35",
+        		"backgroundColorBottom":"#fff"
+        	}
+        }
+        ,{
+            "path" : "pages/functions/chatRoom/HM-hand",
+            "style" : {
+            	"navigationBarBackgroundColor":"#cf3c35",
+            	"navigationBarTextStyle":"white",
+            	"navigationBarTitleText":"发红包",
+            	"backgroundColorTop":"#cf3c35",
+            	"backgroundColorBottom":"#fff",
+        		"app-plus":{
+        			"softinputNavBar":"none",
+        			"bounce":"none"
+        		}
+            }
         }
     ],
 	"globalStyle": {

@@ -85,7 +85,9 @@
             },
             /* SDK配置 */
             "sdkConfigs" : {
-                "ad" : {},
+                "ad" : {
+                    "gdt" : {}
+                },
                 "push" : {
                     "unipush" : {}
                 },
@@ -130,8 +132,8 @@
                 }
             },
             "splashscreen" : {
-                "iosStyle" : "storyboard",
-                "androidStyle" : "default",
+                "iosStyle" : "common",
+                "androidStyle" : "common",
                 "ios" : {
                     "storyboard" : "config/ios/CustomStoryboard.zip"
                 },

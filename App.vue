@@ -6,6 +6,7 @@
 	import Vue from 'vue'
 	export default {
 		onLaunch: function() {
+			
 			_self = this
 			console.log('App Launch')
 			_self.$store.state.platform = uni.getSystemInfoSync().platform
