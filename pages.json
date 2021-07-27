@@ -463,6 +463,38 @@
         		}
             }
         }
+        ,{
+            "path" : "pages/functions/PeriodDays/PeriodDays",
+            "style" :                                                                                    
+            {
+               "navigationBarBackgroundColor":"#1013cf",
+               "navigationBarTextStyle":"white",
+               "navigationBarTitleText":"日期计算",
+               "backgroundColorTop":"#1013cf",
+               "backgroundColorBottom":"#fff",
+               "app-plus":{
+               	"softinputNavBar":"none",
+               	"bounce":"none"
+               }
+            }
+            
+        }
+        ,{
+            "path" : "pages/functions/Location/Location",
+            "style" :                                                                                    
+            {
+               "navigationBarBackgroundColor":"#00aaff",
+               "navigationBarTextStyle":"white",
+               "navigationBarTitleText":"位置信息",
+               "backgroundColorTop":"#00aaff",
+               "backgroundColorBottom":"#fff",
+               "app-plus":{
+               	"softinputNavBar":"none",
+               	"bounce":"none"
+               }
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
