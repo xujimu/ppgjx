@@ -258,6 +258,16 @@ const store = new Vuex.Store({
 				display: true,
 				platform: 0 //0通用1ios2andorid
 
+			},
+			{
+				title: '全屏时钟',
+				name: '/pages/functions/FullClock/FullClock',
+				color: 'purple',
+				cuIcon: 'timefill',
+				describe: '全屏时钟',
+				display: true,
+				platform: 0 //0通用1ios2andorid
+			
 			}
 		],
 		flashlightIndex: 0,

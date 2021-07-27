@@ -495,6 +495,16 @@
             }
             
         }
+        ,{
+            "path" : "pages/functions/FullClock/FullClock",
+            "style" :                                                                                    
+            {
+               "navigationBarTitleText": "",
+               "enablePullDownRefresh": false,
+               "navigationStyle": "custom"
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
