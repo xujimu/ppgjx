@@ -249,6 +249,16 @@ const store = new Vuex.Store({
 				platform: 0 //0通用1ios2andorid
 
 			},
+			{
+				title: '位置信息',
+				name: '/pages/functions/Location/Location',
+				color: 'purple',
+				cuIcon: 'location',
+				describe: '位置信息',
+				display: true,
+				platform: 0 //0通用1ios2andorid
+
+			}
 		],
 		flashlightIndex: 0,
 		flashlightSpeed: 1,

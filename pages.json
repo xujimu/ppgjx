@@ -479,6 +479,22 @@
             }
             
         }
+        ,{
+            "path" : "pages/functions/Location/Location",
+            "style" :                                                                                    
+            {
+               "navigationBarBackgroundColor":"#00aaff",
+               "navigationBarTextStyle":"white",
+               "navigationBarTitleText":"位置信息",
+               "backgroundColorTop":"#00aaff",
+               "backgroundColorBottom":"#fff",
+               "app-plus":{
+               	"softinputNavBar":"none",
+               	"bounce":"none"
+               }
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
