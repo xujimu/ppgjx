@@ -463,6 +463,22 @@
         		}
             }
         }
+        ,{
+            "path" : "pages/functions/PeriodDays/PeriodDays",
+            "style" :                                                                                    
+            {
+               "navigationBarBackgroundColor":"#1013cf",
+               "navigationBarTextStyle":"white",
+               "navigationBarTitleText":"日期计算",
+               "backgroundColorTop":"#1013cf",
+               "backgroundColorBottom":"#fff",
+               "app-plus":{
+               	"softinputNavBar":"none",
+               	"bounce":"none"
+               }
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
