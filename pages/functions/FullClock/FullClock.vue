@@ -4,7 +4,7 @@
 	2524931333@qq.com 
 -->
 <template >
-	<view class="content" @tap="quitF()">
+	<view  class="content" @tap="quitF()">
 		<view class="close" v-if="quit"  @tap="exit()"></view>
 	    <view class="flip-container">
 	        <view class="flip-items" v-for="(unit,unitIndex) of timeArr" :key="unitIndex">
@@ -17,7 +17,7 @@
 	                <view class="down">
 	                    <view class="inner">{{index}}</view>
 	                    <view class="shadow"></view>
-	                </view>
+	                </view> 
 	            </view>
 	        </view>
 	    </view>
@@ -42,7 +42,7 @@
 			_self = this
 			setTimeout(function(){
 				plus.screen.lockOrientation('landscape-primary')
-				
+				plus.navigator.setFullscreen(true);
 			},200)
 		},
 		onShow() {
@@ -94,10 +94,10 @@
 			  },
 			  exit(){
 				 console.log("退出")
-				uni.switchTab({
-					url: '/pages/index/index'
-				})
-				
+				 plus.navigator.setFullscreen(false);
+					uni.redirectTo({
+				    url: '/pages/functions/FullClock/skip?home=true'
+					});
 			  }
         },
 		created() {

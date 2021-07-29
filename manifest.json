@@ -2,8 +2,8 @@
     "name" : "皮皮工具箱",
     "appid" : "__UNI__71ADDDF",
     "description" : "",
-    "versionName" : "1.3.4",
-    "versionCode" : 134,
+    "versionName" : "1.3.5",
+    "versionCode" : 135,
     "transformPx" : false,
     /* 5+App特有相关 */
     "app-plus" : {
@@ -37,7 +37,7 @@
         "nvueCompiler" : "uni-app",
         "compilerVersion" : 3,
         "splashscreen" : {
-            "alwaysShowBeforeRender" : true,
+            "alwaysShowBeforeRender" : false,
             "waiting" : false,
             "autoclose" : true,
             "delay" : 0
@@ -89,9 +89,12 @@
                     "NSPhotoLibraryUsageDescription" : "该应用需要读取您的相册，以便为您保存二维码和识别图片",
                     "NSPhotoLibraryAddUsageDescription" : "该应用需要读取您的相册，以便为您保存二维码和识别图片",
                     "NSCameraUsageDescription" : "该应用需要您的相机，以便为您拍照识别图片",
-                    "NSLocalNetworkUsageDescription" : "该应用使用网络，以便为您拍照识别图片和二维码生成"
+                    "NSLocalNetworkUsageDescription" : "该应用使用网络，以便为您拍照识别图片和二维码生成",
+                    "NSLocationAlwaysAndWhenInUseUsageDescription" : "该应用需要访问您的位置,以便为您提供可视数据",
+                    "NSLocationWhenInUseUsageDescription" : "该应用需要访问您的位置,以便为您提供可视数据",
+                    "NSUserTrackingUsageDescription" : "请放心，开启权限不会获取您在其他站点的隐私信息，该权限仅用于标识设备、第三方广告、并保障服务安全与提示浏览体验"
                 },
-                "idfa" : false,
+                "idfa" : true,
                 "UIBackgroundModes" : "audio"
             },
             /* SDK配置 */

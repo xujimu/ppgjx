@@ -22,7 +22,7 @@
 		</view>
 		<view v-if="res.address.country" class="cu-form-group">
 			<view class="title">国家</view>
-			<input v-model="res.address.country" style="padding-bottom: 6.5upx;">
+			<input v-model="res.address.country"  style="padding-bottom: 6.5upx;">
 		</view>
 		<view v-if="res.address.province" class="cu-form-group">
 			<view class="title">省/直辖市</view>
@@ -44,7 +44,7 @@
 		
 		<view v-if="res.address.postalCode" class="cu-form-group">
 			<view class="title">邮政编码</view>
-			<input v-model="res.address.postalCode" style="padding-bottom: 6.5upx;">
+			<input v-model="res.address.postalCode " style="padding-bottom: 6.5upx;">
 		</view>
 		
 		<view v-if="res.address.poiName" class="cu-form-group">
@@ -61,8 +61,26 @@
 </template>
 
 <script>
+	var _self
 	export default {
 		onLoad() {
+			_self = this
+			switch(_self.$store.state.platform){
+				case 'android':
+				   console.log('运行Android上') 
+				   Vue.prototype.requestAndroidPermission("android.permission.ACCESS_FINE_LOCATION","位置权限")
+				   break;
+				case 'ios':
+				   Vue.prototype.requestIosPermission("location","位置权限")
+				   console.log('运行iOS上')
+				   break;
+				default:
+				   console.log('运行在开发者工具上')
+				   break;
+			}
+			
+		},
+		onShow() {
 			this.count()
 		},
 		data() {
@@ -95,7 +113,7 @@
 						// that.res.address.street=addr;
 					}
 				});
-			}
+			},
 		}
 	}
 </script>
