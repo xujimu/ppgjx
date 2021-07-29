@@ -63,6 +63,8 @@
 		},
 		onShow() {
 			console.log("显示")
+			
+			plus.screen.lockOrientation("portrait-primary")
 		},
 		data() {
 			return {

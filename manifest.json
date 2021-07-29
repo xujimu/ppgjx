@@ -2,11 +2,17 @@
     "name" : "皮皮工具箱",
     "appid" : "__UNI__71ADDDF",
     "description" : "",
-    "versionName" : "1.3.3",
-    "versionCode" : 133,
+    "versionName" : "1.3.4",
+    "versionCode" : 134,
     "transformPx" : false,
     /* 5+App特有相关 */
     "app-plus" : {
+        "screenOrientation" : [
+            "portrait-primary",
+            "landscape-primary",
+            "portrait-secondary",
+            "landscape-secondary"
+        ],
         "privacy" : {
             "prompt" : "template",
             "template" : {
@@ -20,6 +26,11 @@
                     "buttonAccept" : "同意并继续",
                     "buttonRefuse" : "退出应用"
                 }
+            }
+        },
+        "safearea" : {
+            "bottom" : {
+                "offset" : "none"
             }
         },
         "usingComponents" : true,
@@ -85,9 +96,7 @@
             },
             /* SDK配置 */
             "sdkConfigs" : {
-                "ad" : {
-                    "gdt" : {}
-                },
+                "ad" : {},
                 "push" : {
                     "unipush" : {}
                 },
