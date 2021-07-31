@@ -463,13 +463,63 @@
         		}
             }
         }
+        ,{
+            "path" : "pages/functions/PeriodDays/PeriodDays",
+            "style" :                                                                                    
+            {
+               "navigationBarTextStyle":"white",
+               "navigationBarTitleText":"日期计算",
+               "backgroundColorTop":"#1013cf",
+               "backgroundColorBottom":"#fff",
+               "app-plus":{
+               	"softinputNavBar":"none",
+               	"bounce":"none"
+               }
+            }
+            
+        }
+        ,{
+            "path" : "pages/functions/Location/Location",
+            "style" :                                                                                    
+            {
+               "navigationBarTextStyle":"white",
+               "navigationBarTitleText":"位置信息",
+               "backgroundColorTop":"#00aaff",
+               "backgroundColorBottom":"#fff",
+               "app-plus":{
+               	"softinputNavBar":"none",
+               	"bounce":"none"
+               }
+            }
+            
+        }
+        ,{
+            "path" : "pages/functions/FullClock/FullClock",
+            "style" :                                                                                    
+            {
+               "navigationBarTitleText": "",
+               "enablePullDownRefresh": false,
+               "navigationStyle": "custom"
+            }
+            
+        }
+        ,{
+            "path" : "pages/functions/FullClock/skip",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "皮皮工具箱",
 		"navigationBarBackgroundColor": "#0081ff",
-		"backgroundColor": "#F8F8F8"
-		
+		"backgroundColor": "#F8F8F8",
+		"pageOrientation": "auto"
 	},
 	"tabBar": {
 		"color": "#333",
