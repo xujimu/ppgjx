@@ -278,6 +278,16 @@ const store = new Vuex.Store({
 				display: true,
 				platform: 0 //0通用1ios2andorid
 			
+			},
+			{
+				title: '2048',
+				name: '/pages/functions/2048/2048',
+				color: 'pic',
+				cuIcon: 'game',
+				describe: '2048小游戏',
+				display: true,
+				platform: 0 //0通用1ios2andorid
+			
 			}
 		],
 		flashlightIndex: 0,

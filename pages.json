@@ -521,6 +521,22 @@
            }
             
         }
+        ,{
+            "path" : "pages/functions/2048/2048",
+            "style" :                                                                                    
+            {
+               "navigationBarBackgroundColor":"#96838C",
+               "navigationBarTextStyle":"white",
+               "navigationBarTitleText":"2048",
+               "backgroundColorTop":"#96838C",
+               "backgroundColorBottom":"#fff",
+               "app-plus":{
+               	"softinputNavBar":"none",
+               	"bounce":"none"
+               }
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
