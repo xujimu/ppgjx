@@ -179,12 +179,12 @@
 		}, {
 			"path": "pages/functions/photoBox/start",
 			"style": {
-				"enablePullDownRefresh":false,
+				"enablePullDownRefresh": false,
 				"popGesture": "none",
 				"navigationStyle": "custom",
-				"statusbar":{
-				"background":"#0081ff"
-				
+				"statusbar": {
+					"background": "#0081ff"
+
 				}
 			}
 		}, {
@@ -194,355 +194,298 @@
 				"enablePullDownRefresh": false
 			}
 
-		}
-	    ,{
-            "path" : "pages/index/setting/setting",
-            "style" :                                                                                    
-            {
+		}, {
+			"path": "pages/index/setting/setting",
+			"style": {
 				"navigationBarTitleText": "设置",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/index/setting/notFun",
-            "style" :                                                                                    
-            {
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/index/setting/notFun",
+			"style": {
 				"navigationBarTitleText": "功能列表",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/index/setting/oneFun",
-            "style" :                                                                                    
-            {
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/index/setting/oneFun",
+			"style": {
 				"navigationBarTitleText": "单功能",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/functions/longPage/longPage",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "网页截屏",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/functions/imgZip/imgZip",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "图片压缩",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/functions/test/test",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/functions/divCalculate/divCalculate",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "DIY计算器",
-                "enablePullDownRefresh": false,
-				"titleNView":{
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/functions/longPage/longPage",
+			"style": {
+				"navigationBarTitleText": "网页截屏",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/functions/imgZip/imgZip",
+			"style": {
+				"navigationBarTitleText": "图片压缩",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/functions/test/test",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/functions/divCalculate/divCalculate",
+			"style": {
+				"navigationBarTitleText": "DIY计算器",
+				"enablePullDownRefresh": false,
+				"titleNView": {
 					"padding-right": "6px",
-					"buttons":[
-					  {
-						"text":"添加",
-						"fontSize":"16px",
-						"width":"auto"
-					  }
-					]
-				 }
-            }
-            
-        }
-        ,{
-            "path" : "pages/functions/divCalculate/add",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false,
-				"titleNView":{
+					"buttons": [{
+						"text": "添加",
+						"fontSize": "16px",
+						"width": "auto"
+					}]
+				}
+			}
+
+		}, {
+			"path": "pages/functions/divCalculate/add",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
+				"titleNView": {
 					"padding-right": "6px",
-					"buttons":[
-					  {
-						"text":"新增参数",
-						"fontSize":"16px",
-						"width":"auto"
-					  },
-					  {
-						"text":"保存",
-						"fontSize":"16px",
-						"width":"auto"
-					  },
-					  {
-						"text":"回退",
-						"fontSize":"16px",
-						"width":"auto"
-					  }
+					"buttons": [{
+							"text": "新增参数",
+							"fontSize": "16px",
+							"width": "auto"
+						},
+						{
+							"text": "保存",
+							"fontSize": "16px",
+							"width": "auto"
+						},
+						{
+							"text": "回退",
+							"fontSize": "16px",
+							"width": "auto"
+						}
 					]
-				 }
-            }
-            
-        }
-        ,{
-            "path" : "pages/functions/divCalculate/help",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/functions/pictureProduction/pictureProduction",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "王者头像生成",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/functions/TakeAshot/TakeAshot",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "在线皮友",
+				}
+			}
+
+		}, {
+			"path": "pages/functions/divCalculate/help",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/functions/pictureProduction/pictureProduction",
+			"style": {
+				"navigationBarTitleText": "王者头像生成",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/functions/TakeAshot/TakeAshot",
+			"style": {
+				"navigationBarTitleText": "在线皮友",
 				"enablePullDownRefresh": true,
-				"titleNView":{
+				"titleNView": {
 					"padding-right": "6px",
-					"buttons":[
-					  {
-						"text":"设置",
-						"fontSize":"16px",
-						"width":"auto"
-					  }
-					]
-				 }
-            }
-            
-        }
-        ,{
-            "path" : "pages/functions/TakeAshot/send",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "拍一拍",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/functions/TakeAshot/setting",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "拍拍设置",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/functions/musicPlay/musicPlay",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "我的音乐",
-                "enablePullDownRefresh": false,
-				"titleNView":{
+					"buttons": [{
+						"text": "设置",
+						"fontSize": "16px",
+						"width": "auto"
+					}]
+				}
+			}
+
+		}, {
+			"path": "pages/functions/TakeAshot/send",
+			"style": {
+				"navigationBarTitleText": "拍一拍",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/functions/TakeAshot/setting",
+			"style": {
+				"navigationBarTitleText": "拍拍设置",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/functions/musicPlay/musicPlay",
+			"style": {
+				"navigationBarTitleText": "我的音乐",
+				"enablePullDownRefresh": false,
+				"titleNView": {
 					"padding-right": "6px",
-					"buttons":[
-					  {
-						"text":"导入",
-						"fontSize":"16px",
-						"width":"auto"
-					  }
-					]
-				 }
-            }
-            
-        }
-        ,{
-            "path" : "pages/functions/musicPlay/import",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "导入",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/functions/PortScan/PortScan",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "端口扫描",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/index/setting/privacy",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/functions/expressCheck/expressCheck",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "快递查询",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        
-        ,{
-            "path" : "pages/index/github",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "开发者协作计划",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/index/setting/agreement",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "服务协议",
-                "enablePullDownRefresh": false
-            }
-            
-        },
-        {
-            "path" : "pages/functions/chatRoom/chatRoom",
-            "style" : {
-        		"navigationBarTitleText":"聊天室",
-            	"navigationBarBackgroundColor":"#f2f2f2",
-            	"backgroundColorTop":"#e5e5e5",
-            	"backgroundColorBottom":"#e5e5e5",
-            	"app-plus":{
-            		"softinputNavBar":"none",
-            		"bounce":"none"
-            	}
-            }
-        }
-        ,{
-            "path" : "pages/functions/chatRoom/HM-details",
-            "style" : {
-        		"navigationBarBackgroundColor":"#cf3c35",
-        		"navigationBarTextStyle":"white",
-        		"navigationBarTitleText":"红包",
-        		"backgroundColorTop":"#cf3c35",
-        		"backgroundColorBottom":"#fff"
-        	}
-        }
-        ,{
-            "path" : "pages/functions/chatRoom/HM-hand",
-            "style" : {
-            	"navigationBarBackgroundColor":"#cf3c35",
-            	"navigationBarTextStyle":"white",
-            	"navigationBarTitleText":"发红包",
-            	"backgroundColorTop":"#cf3c35",
-            	"backgroundColorBottom":"#fff",
-        		"app-plus":{
-        			"softinputNavBar":"none",
-        			"bounce":"none"
-        		}
-            }
-        }
-        ,{
-            "path" : "pages/functions/PeriodDays/PeriodDays",
-            "style" :                                                                                    
-            {
-               "navigationBarTextStyle":"white",
-               "navigationBarTitleText":"日期计算",
-               "backgroundColorTop":"#1013cf",
-               "backgroundColorBottom":"#fff",
-               "app-plus":{
-               	"softinputNavBar":"none",
-               	"bounce":"none"
-               }
-            }
-            
-        }
-        ,{
-            "path" : "pages/functions/Location/Location",
-            "style" :                                                                                    
-            {
-               "navigationBarTextStyle":"white",
-               "navigationBarTitleText":"位置信息",
-               "backgroundColorTop":"#00aaff",
-               "backgroundColorBottom":"#fff",
-               "app-plus":{
-               	"softinputNavBar":"none",
-               	"bounce":"none"
-               }
-            }
-            
-        }
-        ,{
-            "path" : "pages/functions/FullClock/FullClock",
-            "style" :                                                                                    
-            {
-               "navigationBarTitleText": "",
-               "enablePullDownRefresh": false,
-               "navigationStyle": "custom"
-            }
-            
-        }
-        ,{
-            "path" : "pages/functions/PeriodRecord/PeriodRecord",
-            "style" :                                                                                    
-           {
-              "navigationBarBackgroundColor":"#ff7df2",
-              "navigationBarTextStyle":"white",
-              "navigationBarTitleText":"经期记录",
-              "backgroundColorTop":"#ff7df2",
-              "backgroundColorBottom":"#fff",
-              "app-plus":{
-              	"softinputNavBar":"none",
-              	"bounce":"none"
-              }
-           }
-            
-        }
-        ,{
-            "path" : "pages/functions/2048/2048",
-            "style" :                                                                                    
-            {
-               "navigationBarBackgroundColor":"#96838C",
-               "navigationBarTextStyle":"white",
-               "navigationBarTitleText":"2048",
-               "backgroundColorTop":"#96838C",
-               "backgroundColorBottom":"#fff",
-               "app-plus":{
-               	"softinputNavBar":"none",
-               	"bounce":"none"
-              }
-        },{
-            "path" : "pages/functions/FullClock/skip",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false,
-			        	"navigationStyle": "custom"
-            }
-        
-        }
-    ],
+					"buttons": [{
+						"text": "导入",
+						"fontSize": "16px",
+						"width": "auto"
+					}]
+				}
+			}
+
+		}, {
+			"path": "pages/functions/musicPlay/import",
+			"style": {
+				"navigationBarTitleText": "导入",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/functions/PortScan/PortScan",
+			"style": {
+				"navigationBarTitleText": "端口扫描",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/index/setting/privacy",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/functions/expressCheck/expressCheck",
+			"style": {
+				"navigationBarTitleText": "快递查询",
+				"enablePullDownRefresh": false
+			}
+
+		}
+
+		, {
+			"path": "pages/index/github",
+			"style": {
+				"navigationBarTitleText": "开发者协作计划",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/index/setting/agreement",
+			"style": {
+				"navigationBarTitleText": "服务协议",
+				"enablePullDownRefresh": false
+			}
+
+		},
+		{
+			"path": "pages/functions/chatRoom/chatRoom",
+			"style": {
+				"navigationBarTitleText": "聊天室",
+				"navigationBarBackgroundColor": "#f2f2f2",
+				"backgroundColorTop": "#e5e5e5",
+				"backgroundColorBottom": "#e5e5e5",
+				"app-plus": {
+					"softinputNavBar": "none",
+					"bounce": "none"
+				}
+			}
+		}, {
+			"path": "pages/functions/chatRoom/HM-details",
+			"style": {
+				"navigationBarBackgroundColor": "#cf3c35",
+				"navigationBarTextStyle": "white",
+				"navigationBarTitleText": "红包",
+				"backgroundColorTop": "#cf3c35",
+				"backgroundColorBottom": "#fff"
+			}
+		}, {
+			"path": "pages/functions/chatRoom/HM-hand",
+			"style": {
+				"navigationBarBackgroundColor": "#cf3c35",
+				"navigationBarTextStyle": "white",
+				"navigationBarTitleText": "发红包",
+				"backgroundColorTop": "#cf3c35",
+				"backgroundColorBottom": "#fff",
+				"app-plus": {
+					"softinputNavBar": "none",
+					"bounce": "none"
+				}
+			}
+		}, {
+			"path": "pages/functions/PeriodDays/PeriodDays",
+			"style": {
+				"navigationBarTextStyle": "white",
+				"navigationBarTitleText": "日期计算",
+				"backgroundColorTop": "#1013cf",
+				"backgroundColorBottom": "#fff",
+				"app-plus": {
+					"softinputNavBar": "none",
+					"bounce": "none"
+				}
+			}
+
+		}, {
+			"path": "pages/functions/Location/Location",
+			"style": {
+				"navigationBarTextStyle": "white",
+				"navigationBarTitleText": "位置信息",
+				"backgroundColorTop": "#00aaff",
+				"backgroundColorBottom": "#fff",
+				"app-plus": {
+					"softinputNavBar": "none",
+					"bounce": "none"
+				}
+			}
+
+		}, {
+			"path": "pages/functions/FullClock/FullClock",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+			}
+
+		}, {
+			"path": "pages/functions/PeriodRecord/PeriodRecord",
+			"style": {
+				"navigationBarBackgroundColor": "#ff7df2",
+				"navigationBarTextStyle": "white",
+				"navigationBarTitleText": "经期记录",
+				"backgroundColorTop": "#ff7df2",
+				"backgroundColorBottom": "#fff",
+				"app-plus": {
+					"softinputNavBar": "none",
+					"bounce": "none"
+				}
+			}
+
+		}, {
+			"path": "pages/functions/2048/2048",
+			"style": {
+				"navigationBarBackgroundColor": "#96838C",
+				"navigationBarTextStyle": "white",
+				"navigationBarTitleText": "2048",
+				"backgroundColorTop": "#96838C",
+				"backgroundColorBottom": "#fff",
+				"app-plus": {
+					"softinputNavBar": "none",
+					"bounce": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/functions/FullClock/skip",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+			}
+
+		}
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "皮皮工具箱",
@@ -567,15 +510,13 @@
 			}
 		]
 	},
-	"condition" : { //模式配置，仅开发期间生效
+	"condition": { //模式配置，仅开发期间生效
 		"current": 0, //当前激活的模式(list 的索引项)
-		"list": [
-			{
-				"name": "", //模式名称
-				"path": "", //启动页面，必选
-				"query": "" //启动参数，在页面的onLoad函数里面得到
-			}
-		]
-	} 
+		"list": [{
+			"name": "", //模式名称
+			"path": "", //启动页面，必选
+			"query": "" //启动参数，在页面的onLoad函数里面得到
+		}]
+	}
 
 }
