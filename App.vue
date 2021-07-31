@@ -310,6 +310,16 @@
 								console.log('executeSql failed: '+JSON.stringify(e));
 							}
 					});
+					plus.sqlite.executeSql({
+							name: 'ppgjx',
+							sql: 'create table if not exists womanRecord(guid text PRIMARY KEY,date text,tag text,remark text,create_time text)',
+							success: function(e){
+								console.log('executeSql success!');
+							}, 
+							fail: function(e){ 
+								console.log('executeSql failed: '+JSON.stringify(e));
+							}
+					});
 				},
 				fail: function(e){
 					console.log('openDatabase failed: '+JSON.stringify(e));

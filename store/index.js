@@ -268,6 +268,26 @@ const store = new Vuex.Store({
 				display: true,
 				platform: 0 //0通用1ios2andorid
 			
+			},
+			{
+				title: '经期记录',
+				name: '/pages/functions/PeriodRecord/PeriodRecord',
+				color: 'purple',
+				cuIcon: 'timefill',
+				describe: '女性经期记录',
+				display: true,
+				platform: 0 //0通用1ios2andorid
+			
+			},
+			{
+				title: '2048',
+				name: '/pages/functions/2048/2048',
+				color: 'pic',
+				cuIcon: 'game',
+				describe: '2048小游戏',
+				display: true,
+				platform: 0 //0通用1ios2andorid
+			
 			}
 		],
 		flashlightIndex: 0,
