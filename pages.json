@@ -467,7 +467,6 @@
             "path" : "pages/functions/PeriodDays/PeriodDays",
             "style" :                                                                                    
             {
-               "navigationBarBackgroundColor":"#1013cf",
                "navigationBarTextStyle":"white",
                "navigationBarTitleText":"日期计算",
                "backgroundColorTop":"#1013cf",
@@ -483,7 +482,6 @@
             "path" : "pages/functions/Location/Location",
             "style" :                                                                                    
             {
-               "navigationBarBackgroundColor":"#00aaff",
                "navigationBarTextStyle":"white",
                "navigationBarTitleText":"位置信息",
                "backgroundColorTop":"#00aaff",
@@ -533,17 +531,24 @@
                "app-plus":{
                	"softinputNavBar":"none",
                	"bounce":"none"
-               }
+              }
+        },{
+            "path" : "pages/functions/FullClock/skip",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+			        	"navigationStyle": "custom"
             }
-            
+        
         }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "皮皮工具箱",
 		"navigationBarBackgroundColor": "#0081ff",
-		"backgroundColor": "#F8F8F8"
-		
+		"backgroundColor": "#F8F8F8",
+		"pageOrientation": "auto"
 	},
 	"tabBar": {
 		"color": "#333",
