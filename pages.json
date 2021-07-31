@@ -505,6 +505,22 @@
             }
             
         }
+        ,{
+            "path" : "pages/functions/PeriodRecord/PeriodRecord",
+            "style" :                                                                                    
+           {
+              "navigationBarBackgroundColor":"#ff7df2",
+              "navigationBarTextStyle":"white",
+              "navigationBarTitleText":"经期记录",
+              "backgroundColorTop":"#ff7df2",
+              "backgroundColorBottom":"#fff",
+              "app-plus":{
+              	"softinputNavBar":"none",
+              	"bounce":"none"
+              }
+           }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
