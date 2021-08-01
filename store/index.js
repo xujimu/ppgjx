@@ -254,7 +254,7 @@ const store = new Vuex.Store({
 				name: '/pages/functions/Location/Location',
 				color: 'purple',
 				cuIcon: 'location',
-				describe: '官方',
+				describe: '撩到腿软',
 				display: true,
 				platform: 0 //0通用1ios2andorid
 
@@ -291,11 +291,11 @@ const store = new Vuex.Store({
 			}
 		],
 		flashlightIndex: 0,
-		flashlightSpeed: 1,
-		vibrateIndex: 0,
+		flashlightSpeed: 1, 
+		vibrateIndex: 0, 
 		vibrateSpeed: 1,
 		platfrom: '',
-		version: '1.3.6'
+		version: '1.3.5'
 	},
 	mutations: {},
 	actions: {}

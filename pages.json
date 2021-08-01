@@ -485,7 +485,16 @@
 			}
 
 		}
-	],
+	    ,{
+            "path" : "pages/index/bindPhone",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "绑定手机",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "皮皮工具箱",
