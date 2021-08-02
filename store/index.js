@@ -288,6 +288,16 @@ const store = new Vuex.Store({
 				display: true,
 				platform: 0 //0通用1ios2andorid
 			
+			},
+			{
+				title: '扫雷',
+				name: '/pages/functions/mineSweeping/mineSweeping',
+				color: 'pic',
+				cuIcon: 'game',
+				describe: '皮友:撩到腿软提供',
+				display: true,
+				platform: 0 //0通用1ios2andorid
+			
 			}
 		],
 		flashlightIndex: 0,
