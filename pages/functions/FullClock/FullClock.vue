@@ -21,11 +21,9 @@
 	            </view>
 	        </view>
 	    </view>
-	    
 	</view>
-    
 </template>
-
+ 
 <script >
     function getTimeStr(){
         let time = new Date();
@@ -44,6 +42,9 @@
 				plus.screen.lockOrientation('landscape-primary')
 				plus.navigator.setFullscreen(true);
 			},200)
+		},
+		onBackPress(options) {
+		   _self.exit()  
 		},
 		onShow() {
 			
