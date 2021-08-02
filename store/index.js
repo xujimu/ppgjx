@@ -261,7 +261,7 @@ const store = new Vuex.Store({
 			},
 			{
 				title: '全屏时钟',
-				name: '/pages/functions/FullClock/FullClock',
+				name: '/pages/functions/FullClock/skip',
 				color: 'purple',
 				cuIcon: 'timefill',
 				describe: '全屏时钟',
@@ -305,7 +305,7 @@ const store = new Vuex.Store({
 		vibrateIndex: 0,
 		vibrateSpeed: 1,
 		platfrom: '',
-		version: '1.3.3'
+		version: '1.3.5'
 	},
 	mutations: {},
 	actions: {}
