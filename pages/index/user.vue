@@ -11,10 +11,12 @@
 				</u-cell-item>
 				<u-cell-item  title="修改密码"  @click="navto('/pages/index/changePassword')">
 				</u-cell-item>
+				<u-cell-item  title="手机号"  :value="$store.state.user ? $store.state.user.phone ? $store.state.user.phone : '未绑定' : '未登录'"  @click="binPhone()">
+				</u-cell-item> 
 				<u-cell-item  title="退出"  @click="quit()">
 				</u-cell-item>
 			</u-cell-group> 
-		</view>
+		</view> 
 	
 	</view>
 </template>
@@ -22,8 +24,8 @@
 <script>
 	var _self;
 	export default {
-		onLoad() {
-			_self = this
+		onLoad() { 
+			_self = this 
 		},
 		data() {
 			return { 
@@ -31,12 +33,20 @@
 			}
 		},
 		methods: {
+			binPhone(){
+				if(_self.$store.state.user.phone){
+					plus.nativeUI.alert("暂不支持修改哦!", function(){
+						}, "提示", "好的");
+				}else{
+					_self.navto('/pages/index/bindPhone');
+				}
+				 
+			},
 			skip:function(){
 				plus.nativeUI.alert("暂不支持修改哦!", function(){
 					}, "提示", "好的");
 			},
 			quit(){
-				
 				uni.showModal({
 				    title: '提示',
 				    content: '确定要退出吗?',
