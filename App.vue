@@ -205,59 +205,59 @@
 		onShow: function() {
 			var pushStatus = 0
 			//安卓应用内提示更新
-			switch (_self.$store.state.platform) {
-				case 'android':	
-					uni.request({
-						url: _self.domain + "/index/index/update", //仅为示例，并非真实接口地址。
-						method: "POST",
-						data: {
-							version: _self.$store.state.version
-						}, 
-						header: {
-							'Content-Type': 'application/x-www-form-urlencoded'
-						},
-						success: (res) => {
-							console.log(res.data);
+			// switch (_self.$store.state.platform) {
+			// 	case 'android':	
+			// 		uni.request({
+			// 			url: _self.domain + "/index/index/update", //仅为示例，并非真实接口地址。
+			// 			method: "POST",
+			// 			data: {
+			// 				version: _self.$store.state.version
+			// 			}, 
+			// 			header: {
+			// 				'Content-Type': 'application/x-www-form-urlencoded'
+			// 			},
+			// 			success: (res) => {
+			// 				console.log(res.data);
 			
-							if (res.data.code == 0) {
-								if (res.data.data != null) {
-									var url = res.data.data
-									uni.showModal({
-										title: '提示',  
-										content: res.data.message,
-										success: function(res) {
-											if (res.confirm) {
-												plus.runtime.openURL(url)
-											} else if (res.cancel) {
-												console.log('用户点击取消');
-											}
-										}
-									});
-								}
-							} else {
-								plus.nativeUI.alert(res.data.message, function() {}, "提示", "好的");
-							}
-						},
-						fail: (err) => {
-							console.log(err)
-						},
-						complete: () => {
+			// 				if (res.data.code == 0) {
+			// 					if (res.data.data != null) {
+			// 						var url = res.data.data
+			// 						uni.showModal({
+			// 							title: '提示',  
+			// 							content: res.data.message,
+			// 							success: function(res) {
+			// 								if (res.confirm) {
+			// 									plus.runtime.openURL(url)
+			// 								} else if (res.cancel) {
+			// 									console.log('用户点击取消');
+			// 								}
+			// 							}
+			// 						});
+			// 					}
+			// 				} else {
+			// 					plus.nativeUI.alert(res.data.message, function() {}, "提示", "好的");
+			// 				}
+			// 			},
+			// 			fail: (err) => {
+			// 				console.log(err)
+			// 			},
+			// 			complete: () => {
 			
-						}
-					});
-					break;
-				case 'ios':
-					if(permision.judgeIosPermission("push") === 2){
-						pushStatus = 0
-					}else{
-						pushStatus = 1
-					}
-					console.log('运行iOS上')
-					break;
-				default:
-					console.log('运行在开发者工具上')
-					break;
-			}
+			// 			}
+			// 		});
+			// 		break;
+			// 	case 'ios':
+			// 		if(permision.judgeIosPermission("push") === 2){
+			// 			pushStatus = 0
+			// 		}else{
+			// 			pushStatus = 1
+			// 		}
+			// 		console.log('运行iOS上')
+			// 		break;
+			// 	default:
+			// 		console.log('运行在开发者工具上')
+			// 		break;
+			// }
 			//如果用户登录 则上报
 			if(_self.$store.state.user){
 				//上报状态

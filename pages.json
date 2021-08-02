@@ -537,6 +537,22 @@
             }
             
         }
+        ,{
+            "path" : "pages/functions/mineSweeping/mineSweeping",
+            "style" :                                                                                    
+            {
+               "navigationBarBackgroundColor":"#96838C",
+               "navigationBarTextStyle":"white",
+               "navigationBarTitleText":"扫雷",
+               "backgroundColorTop":"#96838C",
+               "backgroundColorBottom":"#fff",
+               "app-plus":{
+               	"softinputNavBar":"none",
+               	"bounce":"none"
+               }
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
