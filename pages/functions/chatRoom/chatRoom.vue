@@ -1,17 +1,17 @@
 <template>
 	<view>
 		<view class="content" @touchstart="hideDrawer">
-			<scroll-view class="msg-list" scroll-y="true" :scroll-with-animation="scrollAnimation" :scroll-top="scrollTop" :scroll-into-view="scrollToView" @scrolltoupper="loadHistory" upper-threshold="50">
+			<scroll-view class="msg-list" scroll-y="false" :scroll-with-animation="scrollAnimation" :scroll-top="scrollTop" :scroll-into-view="scrollToView" upper-threshold="50">
 				<!-- 加载历史数据waitingUI -->
-				<view class="loading">
+				<!-- <view class="loading">
 					<view class="spinner">
 						<view class="rect1"></view>
 						<view class="rect2"></view>
-						<view class="rect3"></view>
+						<view class="rect3"></view> 
 						<view class="rect4"></view>
 						<view class="rect5"></view>
 					</view>
-				</view>
+				</view> -->
 				<view class="row" v-for="(row,index) in msgList" :key="index" :id="'msg'+row.msg.id">
 					<!-- 系统消息 -->
 					<block v-if="row.type=='system'" >
@@ -30,7 +30,7 @@
 					<!-- 用户消息 -->
 					<block v-if="row.type=='user'">
 						<!-- 自己发出的消息 -->
-						<view class="my" v-if="row.msg.userinfo.uid==myuid">
+						<view class="my" v-if="row.msg.userinfo.uid==$store.state.user.user_id">
 							<!-- 左-消息 -->
 							<view class="left">
 								<!-- 文字消息 -->
@@ -64,7 +64,7 @@
 							</view>
 						</view>
 						<!-- 别人发出的消息 -->
-						<view class="other" v-if="row.msg.userinfo.uid!=myuid">
+						<view class="other" v-if="row.msg.userinfo.uid!=$store.state.user.user_id">
 							<!-- 左-头像 -->
 							<view class="left">
 								<image :src="row.msg.userinfo.face"></image>
@@ -72,7 +72,7 @@
 							<!-- 右-用户名称-时间-消息 -->
 							<view class="right">
 								<view class="username">
-									<view class="name">{{row.msg.userinfo.username}}</view> <view class="time">{{row.msg.time}}</view>
+									<view class="name">{{row.msg.userinfo.username}}</view> <view class="time"></view>
 								</view>
 								<!-- 文字消息 -->
 								<view v-if="row.msg.type=='text'" class="bubble">
@@ -141,17 +141,11 @@
 					<view class="box">
 						<textarea auto-height="true" v-model="textMsg" @focus="textareaFocus"/>
 					</view>
-					<view class="em" @tap="chooseEmoji">
-						<view class="icon biaoqing"></view>
-					</view>
 				</view>
-			</view>
-			<!-- #ifndef H5 -->
-			<view class="more" @tap="showMore">
-				<view class="icon add"></view>
-			</view>
-			<!-- #endif -->
-			<view class="send" :class="isVoice?'hidden':''" @tap="sendText">
+			</view>  
+			
+			<view style="width: 40rpx;"></view>
+			<view class="send" :class="isVoice?'hidden':''" @tap="send">
 				<view class="btn">发送</view>
 			</view>
 		</view>
@@ -186,6 +180,8 @@
 	</view>
 </template>
 <script>
+	var _self
+	var ping 
 	export default {
 		data() {
 			return {
@@ -245,7 +241,116 @@
 			};
 		},
 		onLoad(option) {
-			this.getMsgList();
+			_self = this
+				
+			//进行链接
+			_self.connect()
+			
+			//定时发送ping包
+			 ping =	setInterval(function(res){
+				// console.log("发送ping")
+				uni.sendSocketMessage({
+				      data: 'ping',
+					  fail() {
+					  	console.log("发送失败")
+						plus.nativeUI.toast("与服务器断开链接 正在尝试重新链接~~");
+						_self.reconnect();
+					  }
+				});
+			},1000)
+			
+			uni.onSocketOpen(function (res) {
+			  console.log('WebSocket连接已打开！');
+			});
+			uni.onSocketError(function (res) {
+			  console.log('WebSocket连接打开失败，请检查！');
+			});
+			uni.onSocketMessage(function (res) { 
+				
+				// {
+				// 	"code": 0,
+				// 	"message": "加入聊天室",
+				// 	"data": {
+				// 		"type": 3,
+				// 		"text": "皮皮工具箱加入聊天室"
+				// 	}
+				// }
+				
+				// {type:"system",msg:{id:0,type:"text",content:{text:"欢迎进入HM-chat聊天室"}}},
+				// {type:"user",msg:{id:1,type:"text",time:"12:56",userinfo:{uid:0,username:"大黑哥",face:"/static/img/face.jpg"},content:{text:"为什么温度会相差那么大？"}}},
+				// {type:"user",msg:{id:2,type:"text",time:"12:57",userinfo:{uid:1,username:"售后客服008",face:"/static/img/im/face/face_2.jpg"},content:{text:"这个是有偏差的，两个温度相差十几二十度是很正常的，如果相差五十度，那即是质量问题了。"}}},
+				// {type:"user",msg:{id:3,type:"voice",time:"12:59",userinfo:{uid:1,username:"售后客服008",face:"/static/img/im/face/face_2.jpg"},content:{url:"/static/voice/1.mp3",length:"00:06"}}},
+				// {type:"user",msg:{id:4,type:"voice",time:"13:05",userinfo:{uid:0,username:"大黑哥",face:"/static/img/face.jpg"},content:{url:"/static/voice/2.mp3",length:"00:06"}}},
+				// {type:"user",msg:{id:5,type:"img",time:"13:05",userinfo:{uid:0,username:"大黑哥",face:"/static/img/face.jpg"},content:{url:"/static/img/p10.jpg",w:200,h:200}}},
+				// {type:"user",msg:{id:6,type:"img",time:"12:59",userinfo:{uid:1,username:"售后客服008",face:"/static/img/im/face/face_2.jpg"},content:{url:"/static/img/q.jpg",w:1920,h:1080}}},
+				// {type:"system",msg:{id:7,type:"text",content:{text:"欢迎进入HM-chat聊天室"}}},
+			   //解析json
+			  var data = JSON.parse(res.data)
+			  
+			  
+			  console.log('收到服务器内容：',data);
+			  //判断消息类型 0是正常 1是未登录
+			  switch(data.code){
+				  case 0:
+				  //实际应用中，此处应该提交长连接，模板仅做本地处理。
+				  var nowDate = new Date();
+				  let lastid = 1;
+				  console.log('消息长度' + _self.msgList.length)
+				  if(_self.msgList.length > 0){
+					 lastid = _self.msgList[_self.msgList.length-1].msg.id;
+					 lastid++
+				  }
+					// console.log("用户消息",data)
+					//用户消息 0文字 1语音 2图片 3视频 
+					console.log(lastid)
+					console.log(data.data)
+					switch(data.data.type){
+						case 0:
+							console.log("文字",data.data)
+							_self.msgList.push({type:"user",msg:{id:lastid,type:"text",time:nowDate.getHours()+":"+nowDate.getMinutes(),userinfo:{uid:data.data.user.user_id,username:data.data.user.name,face: data.data.user.icon},content:{text:data.data.text}}})
+							break;
+						case 1:
+						    _self.msgList.push({type:"user",msg:{id:lastid,type:"voice",time:nowDate.getHours()+":"+nowDate.getMinutes(),userinfo:{uid:data.data.user.user_id,username:_self.$store.state.user.name,face:data.data.user.icon},content:{url:data.data.text,length:data.data.length}}})
+							console.log("语音",data.data)
+							break;
+						case 2: 
+							console.log("图片",data.data) 
+							break;
+						case 3:
+							_self.msgList.push({type:"system",msg:{id:lastid,type:"text",content:{text:data.data.text}}})
+							console.log("系统消息",data.data)
+							break;	
+					}
+					if(data.data.type != 3){
+						//非自己的消息震动
+						if(data.data.user.user_id!=_self.$store.state.user.user_id){
+							console.log('振动');
+							uni.vibrateLong();
+						}
+					}
+					console.log('消息id' + lastid)
+					_self.$nextTick(function() {
+						_self.scrollToView = 'msg'+ lastid;//跳转上次的第一行信息位置
+					});
+					// _self.data.push(data.data)
+					break;
+				  case 1:
+				    _self.$store.state.user = null
+				    uni.setStorageSync('user', null);
+					plus.nativeUI.alert(data.data.data, function(){
+				  						}, "提示", "好的");
+					uni.switchTab({
+						url: '/pages/index/my'
+					});
+				     console.log("未登录",data)
+					break;
+				   
+			  }
+			});
+			uni.onSocketClose(function (res) {
+			  console.log('WebSocket 已关闭！');
+			}); 
+			 // this.getMsgList();
 			//语音自然播放结束
 			this.AUDIO.onEnded((res)=>{
 				this.playMsgid=null;
@@ -260,24 +365,31 @@
 				this.recordEnd(e);
 			})
 			// #endif
+
+		},
+		onUnload() {
+			clearInterval(ping)
+			uni.closeSocket({
+				
+			})
 		},
 		onShow(){
-			this.scrollTop = 9999999;
+			// this.scrollTop = 9999999;
 			
 			//模板借由本地缓存实现发红包效果，实际应用中请不要使用此方法。
 			//
-			uni.getStorage({
-				key: 'redEnvelopeData',
-				success:  (res)=>{
-					console.log(res.data);
-					let nowDate = new Date();
-					let lastid = this.msgList[this.msgList.length-1].msg.id;
-					lastid++;
-					let row = {type:"user",msg:{id:lastid,type:"redEnvelope",time:nowDate.getHours()+":"+nowDate.getMinutes(),userinfo:{uid:0,username:"大黑哥",face:"/static/img/face.jpg"},content:{blessing:res.data.blessing,rid:Math.floor(Math.random()*1000+1),isReceived:false}}};
-					this.screenMsg(row);
-					uni.removeStorage({key: 'redEnvelopeData'});
-				}
-			});
+			// uni.getStorage({
+			// 	key: 'redEnvelopeData',
+			// 	success:  (res)=>{
+			// 		console.log(res.data);
+			// 		let nowDate = new Date();
+			// 		let lastid = this.msgList[this.msgList.length-1].msg.id;
+			// 		lastid++;
+			// 		let row = {type:"user",msg:{id:lastid,type:"redEnvelope",time:nowDate.getHours()+":"+nowDate.getMinutes(),userinfo:{uid:0,username:"大黑哥",face:"/static/img/face.jpg"},content:{blessing:res.data.blessing,rid:Math.floor(Math.random()*1000+1),isReceived:false}}};
+			// 		this.screenMsg(row);
+			// 		uni.removeStorage({key: 'redEnvelopeData'});
+			// 	} 
+			// });
 		},
 		methods:{
 			// 接受消息(筛选处理)
@@ -339,7 +451,7 @@
 						{type:"user",msg:{id:3,type:"voice",time:"12:59",userinfo:{uid:1,username:"售后客服008",face:"/static/img/im/face/face_2.jpg"},content:{url:"/static/voice/1.mp3",length:"00:06"}}},
 						{type:"user",msg:{id:4,type:"voice",time:"13:05",userinfo:{uid:0,username:"大黑哥",face:"/static/img/face.jpg"},content:{url:"/static/voice/2.mp3",length:"00:06"}}},
 					]
-					// 获取消息中的图片,并处理显示尺寸
+					// 获取消息中的图片,并处理显示尺寸 
 					for(let i=0;i<list.length;i++){
 						if(list[i].type=='user'&&list[i].msg.type=="img"){
 							list[i].msg.content = this.setPicSize(list[i].msg.content);
@@ -389,7 +501,7 @@
 				// 滚动到底部
 				this.$nextTick(function() {
 					//进入页面滚动到底部
-					this.scrollTop = 9999;
+					this.scrollTop = 9999; 
 					this.$nextTick(function() {
 						this.scrollAnimation = true;
 					});
@@ -528,19 +640,20 @@
 				var nowDate = new Date();
 				let lastid = this.msgList[this.msgList.length-1].msg.id;
 				lastid++;
-				let msg = {type:'user',msg:{id:lastid,time:nowDate.getHours()+":"+nowDate.getMinutes(),type:type,userinfo:{uid:0,username:"大黑哥",face:"/static/img/face.jpg"},content:content}}
+				let msg = {type:'user',msg:{id:lastid,time:nowDate.getHours()+":"+nowDate.getMinutes(),type:type,userinfo:{uid:_self.$store.state.user.user_id,username:_self.$store.state.user.name,face:_self.$store.state.user.icon},content:content}}
 				// 发送消息
 				this.screenMsg(msg);
-				// 定时器模拟对方回复,三秒
-				setTimeout(()=>{
-					lastid = this.msgList[this.msgList.length-1].msg.id;
-					lastid++;
-					msg = {type:'user',msg:{id:lastid,time:nowDate.getHours()+":"+nowDate.getMinutes(),type:type,userinfo:{uid:1,username:"售后客服008",face:"/static/img/im/face/face_2.jpg"},content:content}}
-					// 本地模拟发送消息
-					this.screenMsg(msg);
-				},3000)
+				
 			},
-			
+			send(){
+				console.log("发送数据")
+				if(_self.textMsg){
+					uni.sendSocketMessage({
+					      data: JSON.stringify({type: 0, text: _self.textMsg})
+					});
+					_self.textMsg = '' 
+				}
+			},
 			// 添加文字消息到列表
 			addTextMsg(msg){
 				this.msgList.push(msg);
@@ -603,7 +716,7 @@
 					this.windowsState = 'show';
 					
 				},200)
-				
+				 
 			},
 			// 关闭红包弹窗
 			closeRedEnvelope(){
@@ -705,7 +818,26 @@
 					min = min<10?'0'+min:min;
 					sec = sec<10?'0'+sec:sec;
 					msg.length = min+':'+sec;
-					this.sendMsg(msg,'voice');
+					console.log("发送语音")
+					_self.xhttp.upload('/functions/upload/tempMp3',{
+						filePath: e.tempFilePath,
+						name: 'file', 
+						header:{
+							'content-type': 'multipart/form-data'  
+						},
+					}).then(res => {
+						console.log(res)
+						if(res.data.code == 0){
+							uni.sendSocketMessage({
+							      data: JSON.stringify({type: 1, text: res.data.data,length: min+':'+sec}),
+							});
+						} 
+						uni.hideLoading(); 
+					}).catch(err => {
+						uni.hideLoading(); 
+					})
+					
+					// this.sendMsg(msg,'voice');
 				}else{
 					console.log('取消发送录音');
 				}
@@ -718,7 +850,16 @@
 			},
 			discard(){
 				return;
-			}
+			},
+			reconnect(){
+				console.log("重新链接")
+				_self.connect()
+			},
+			connect(){
+				uni.connectSocket({
+				    url: 'ws://ppgjx.com:7777?token=' + _self.$store.state.user.token ,
+				});
+			} 
 		}
 	}
 </script>

@@ -298,6 +298,16 @@ const store = new Vuex.Store({
 				display: true,
 				platform: 0 //0通用1ios2andorid
 			
+			},
+			{
+				title: '聊天室',
+				name: '/pages/functions/chatRoom/select',
+				color: 'pic',
+				cuIcon: 'game',
+				describe: '官方',
+				display: true,
+				platform: 0 //0通用1ios2andorid
+			
 			}
 		],
 		flashlightIndex: 0,

@@ -383,14 +383,7 @@
 		{
 			"path": "pages/functions/chatRoom/chatRoom",
 			"style": {
-				"navigationBarTitleText": "聊天室",
-				"navigationBarBackgroundColor": "#f2f2f2",
-				"backgroundColorTop": "#e5e5e5",
-				"backgroundColorBottom": "#e5e5e5",
-				"app-plus": {
-					"softinputNavBar": "none",
-					"bounce": "none"
-				}
+				"navigationBarTitleText": "聊天室"
 			}
 		}, {
 			"path": "pages/functions/chatRoom/HM-details",
@@ -503,6 +496,15 @@
 		    "style" :                                                                                    
 		    {
 		        "navigationBarTitleText": "绑定手机",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		},
+		{
+		    "path" : "pages/functions/chatRoom/select",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "聊天频道",
 		        "enablePullDownRefresh": false
 		    }
 		    
