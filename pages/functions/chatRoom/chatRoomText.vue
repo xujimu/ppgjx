@@ -143,15 +143,16 @@
 		<view class="input-box" :class="popupLayerClass" @touchmove.stop.prevent="discard">
 			<!-- H5下不能录音，输入栏布局改动一下 -->
 			<!-- #ifndef H5 -->
-			<view class="voice">
+			<!-- <view class="voice">
 				<view class="icon" :class="isVoice?'jianpan':'yuyin'" @tap="switchVoice"></view>
-			</view>
+			</view> -->
 			<!-- #endif -->
 			<!-- #ifdef H5 -->
-			<view class="more" @tap="showMore">
+			<!-- <view class="more" @tap="showMore">
 				<view class="icon add"></view>
-			</view>
+			</view> -->
 			<!-- #endif -->
+			<view style="width: 40rpx;"></view>
 			<view class="textbox">
 				<view class="voice-mode" :class="[isVoice?'':'hidden',recording?'recording':'']"
 					@touchstart="voiceBegin" @touchmove.stop.prevent="voiceIng" @touchend="voiceEnd"
@@ -1677,7 +1678,7 @@
 			},
 			connect() {
 				uni.connectSocket({
-					url: 'ws://ppgjx.com:7777?token=' + _self.$store.state.user.token + '&room=chat',
+					url: 'ws://ppgjx.com:7777?token=' + _self.$store.state.user.token + '&room=text',
 				});
 			}
 		}

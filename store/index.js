@@ -309,6 +309,17 @@ const store = new Vuex.Store({
 				platform: 0 //0通用1ios2andorid
 			
 			}
+			// ,
+			// {
+			// 	title: '测试',
+			// 	name: '/pages/functions/test/test',
+			// 	color: 'pic',
+			// 	cuIcon: 'game',
+			// 	describe: '官方',
+			// 	display: true,
+			// 	platform: 0 //0通用1ios2andorid
+			
+			// }
 		],
 		flashlightIndex: 0,
 		flashlightSpeed: 1, 

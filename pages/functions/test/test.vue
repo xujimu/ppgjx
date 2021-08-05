@@ -16,6 +16,7 @@
 		},
 		onLoad() {
 			_self = this
+			console.log(FFmpeg)
 		},
 		onShow() {
 			console.log(FFmpeg)

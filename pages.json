@@ -383,9 +383,23 @@
 		{
 			"path": "pages/functions/chatRoom/chatRoom",
 			"style": {
-				"navigationBarTitleText": "聊天室"
+				"navigationBarTitleText": "语音文字聊天室"
 			}
-		}, {
+		},
+		{
+			"path": "pages/functions/chatRoom/chatRoomText",
+			"style": {
+				"navigationBarTitleText": "文字聊天室"
+			}
+		},
+		
+		{
+			"path": "pages/functions/chatRoom/chatRoomAudio",
+			"style": {
+				"navigationBarTitleText": "语音聊天室"
+			}
+		},
+		{
 			"path": "pages/functions/chatRoom/HM-details",
 			"style": {
 				"navigationBarBackgroundColor": "#cf3c35",
