@@ -73,7 +73,7 @@
 			switch (_self.$store.state.platform) {
 				case 'android':
 					console.log('运行Android上')
-					Vue.prototype.requestAndroidPermission("android.permission.CAMERA")
+					Vue.prototype.requestAndroidPermission("android.permission.CAMERA",'相册')
 					break;
 				case 'ios':
 					Vue.prototype.requestIosPermission("camera", "摄像头")

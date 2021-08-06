@@ -193,6 +193,22 @@ Vue.prototype.requestIosPermission = function (permisionID,name) {
 				    }
 				});
 			}
+		}else if(permisionID == 'record'){
+			if(result){
+				
+			}else{
+				uni.showModal({
+				    title: '提示',
+				    content: '应用无法获取您' + name + '的权限,部分功能无法使用,是否前往设置手动给予权限?',
+				    success: function (res) {
+				        if (res.confirm) {
+				           permision.gotoAppPermissionSetting()
+				        } else if (res.cancel) {
+				            console.log('用户点击取消');
+				        }
+				    }
+				});
+			}
 		}else{
 			if(result === 2){
 				uni.showModal({

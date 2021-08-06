@@ -523,6 +523,15 @@
 		    }
 		    
 		}
+        ,{
+            "path" : "pages/functions/chatRoom/banned",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",

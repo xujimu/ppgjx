@@ -1,14 +1,14 @@
 <template>
-	<u-cell-group>
-		<u-cell-item icon="file-text" @click="skip('/pages/functions/chatRoom/chatRoomText','text')"  title="文字聊天室" >
-		</u-cell-item>
-		<u-cell-item icon="mic" @click="skip('/pages/functions/chatRoom/chatRoomAudio','audio')" title="语音聊天室" >
-		</u-cell-item>
-		<u-cell-item icon="home" @click="skip('/pages/functions/chatRoom/chatRoom','chat')" title="文字语音聊天室" >
-		</u-cell-item>
-		<u-cell-item icon="home" @click="test()" title="文字语音聊天室" >
-		</u-cell-item>
-	</u-cell-group> 
+	<view>
+		<u-cell-group>
+			<u-cell-item icon="file-text" @click="skip('/pages/functions/chatRoom/chatRoomText','text')"  title="文字聊天室" >
+			</u-cell-item>
+			<u-cell-item icon="mic" @click="skip('/pages/functions/chatRoom/chatRoomAudio','audio')" title="语音聊天室" >
+			</u-cell-item>
+			<u-cell-item icon="home" @click="skip('/pages/functions/chatRoom/chatRoom','chat')" title="文字语音聊天室" >
+			</u-cell-item>
+		</u-cell-group> 
+	</view>
 </template>
 
 <script>

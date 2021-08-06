@@ -303,12 +303,11 @@ const store = new Vuex.Store({
 				title: '聊天室',
 				name: '/pages/functions/chatRoom/select',
 				color: 'pic',
-				cuIcon: 'game',
+				cuIcon: 'service',
 				describe: '官方',
 				display: true,
 				platform: 0 //0通用1ios2andorid
-			
-			}
+			}  
 			// ,
 			// {
 			// 	title: '测试',
@@ -326,7 +325,7 @@ const store = new Vuex.Store({
 		vibrateIndex: 0, 
 		vibrateSpeed: 1,
 		platfrom: '',
-		version: '1.3.7'
+		version: '1.3.8'
 	},
 	mutations: {},
 	actions: {}

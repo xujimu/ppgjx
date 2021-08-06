@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class="content" @touchstart="hideDrawer">
-			<scroll-view class="msg-list" scroll-y="false" :scroll-with-animation="scrollAnimation" :scroll-top="scrollTop" :scroll-into-view="scrollToView" upper-threshold="50">
+			<scroll-view style="width: 100vw;" class="msg-list" scroll-y="false" :scroll-with-animation="scrollAnimation" :scroll-top="scrollTop" :scroll-into-view="scrollToView" upper-threshold="50">
 				<!-- 加载历史数据waitingUI -->
 				<!-- <view class="loading">
 					<view class="spinner">
@@ -67,7 +67,7 @@
 						<view class="other" v-if="row.msg.userinfo.uid!=$store.state.user.user_id">
 							<!-- 左-头像 -->
 							<view class="left">
-								<image @click="banned(row.msg.userinfo.uid,row.msg.userinfo.username)" :src="row.msg.userinfo.face"></image>
+								<image @click="banned(row.msg.userinfo)" :src="row.msg.userinfo.face"></image>
 							</view>
 							<!-- 右-用户名称-时间-消息 -->
 							<view class="right">
@@ -123,11 +123,11 @@
 			</view>
 		</view>
 		<!-- 底部输入栏 -->
-		<view class="input-box" :class="popupLayerClass" @touchmove.stop.prevent="discard">
+		<view style="width: 100vw;" class="input-box" :class="popupLayerClass" @touchmove.stop.prevent="discard">
 			<!-- H5下不能录音，输入栏布局改动一下 -->
 			<!-- #ifndef H5 -->
 			<view class="voice">
-				<view class="icon" :class="isVoice?'jianpan':'yuyin'" @tap="switchVoice"></view>
+				<view class="icon yuyin" ></view>
 			</view>
 			<!-- #endif -->
 			<!-- #ifdef H5 -->
@@ -242,7 +242,19 @@
 		},
 		onLoad(option) {
 			_self = this
-				
+			switch (_self.$store.state.platform) {
+				case 'android':
+					console.log('运行Android上')
+					Vue.prototype.requestAndroidPermission("android.permission.RECORD_AUDIO",'麦克风')
+					break;
+				case 'ios':
+					Vue.prototype.requestIosPermission("record", "麦克风")
+					console.log('运行iOS上')
+					break;
+				default:
+					console.log('运行在开发者工具上')
+					break;
+			}	
 			//进行链接
 			_self.connect()
 			
@@ -405,11 +417,49 @@
 			// });
 		},
 		methods:{
-			banned(uid,name){
-			
-				uni.sendSocketMessage({
-				      data: JSON.stringify({type: 'banned', day: 1,uid: uid,name:name})
-				});
+			banned(user){
+				console.log(user)
+				plus.nativeUI.actionSheet(
+					{title:"封禁:" + user.username, 
+					cancel:"取消",
+					buttons:[ 
+						{
+							title:"1天"
+						},{
+							title:"3天"
+						},{
+							title:"7天"
+						},{
+							title:"永久"
+						}
+					]},
+					function(e){
+						switch(e.index){
+							case 1:
+								uni.sendSocketMessage({
+								      data: JSON.stringify({type: 'banned', day: 1,uid: user.uid,name: user.username})
+								});
+								break;
+							case 2:
+								uni.sendSocketMessage({
+								      data: JSON.stringify({type: 'banned', day: 3,uid: user.uid,name: user.username})
+								});
+								break
+							case 3:
+								uni.sendSocketMessage({
+									  data: JSON.stringify({type: 'banned', day: 7,uid: user.uid,name: user.username})
+								});
+								break
+							case 4:
+								uni.sendSocketMessage({
+									  data: JSON.stringify({type: 'banned', day: 999999,uid: user.uid,name: user.username})
+								});
+								break
+						}
+						console.log("选择: "+e.index);
+					}
+				);
+
 			},
 			// 接受消息(筛选处理)
 			screenMsg(msg){
