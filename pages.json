@@ -532,6 +532,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/functions/phoneSign/phoneSign",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "电子签名",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",

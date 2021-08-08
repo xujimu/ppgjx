@@ -307,6 +307,15 @@ const store = new Vuex.Store({
 				describe: '官方',
 				display: true,
 				platform: 0 //0通用1ios2andorid
+			},
+			{
+				title: '电子签名',
+				name: '/pages/functions/phoneSign/phoneSign',
+				color: 'pic',
+				cuIcon: 'write',
+				describe: '官方',
+				display: true,
+				platform: 0 //0通用1ios2andorid
 			}  
 			// ,
 			// {
@@ -325,7 +334,7 @@ const store = new Vuex.Store({
 		vibrateIndex: 0, 
 		vibrateSpeed: 1,
 		platfrom: '',
-		version: '1.3.8'
+		version: '1.3.9'
 	},
 	mutations: {},
 	actions: {}
