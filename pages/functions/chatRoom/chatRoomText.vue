@@ -885,11 +885,21 @@
 								console.log("系统消息", data.data)
 								break;
 						}
+						
 						if (data.data.type != 3) {
 							//非自己的消息震动
 							if (data.data.user.user_id != _self.$store.state.user.user_id) {
-								console.log('振动');
-								uni.vibrateLong();
+								const innerAudioContext = uni.createInnerAudioContext();
+								innerAudioContext.autoplay = true;
+								innerAudioContext.src = '/static/music/click.mp3';
+								innerAudioContext.play()
+								innerAudioContext.onPlay(() => {
+								  console.log('开始播放');
+								});
+								innerAudioContext.onError((res) => {
+								  console.log(res.errMsg);
+								  console.log(res.errCode);
+								});
 							}
 						}
 						console.log('消息id' + lastid)

@@ -322,22 +322,31 @@
 							_self.msgList.push({type:"user",msg:{id:lastid,type:"text",time:nowDate.getHours()+":"+nowDate.getMinutes(),userinfo:{uid:data.data.user.user_id,username:data.data.user.name,face: data.data.user.icon},content:{text:data.data.text}}})
 							break;
 						case 1:
-						    _self.msgList.push({type:"user",msg:{id:lastid,type:"voice",time:nowDate.getHours()+":"+nowDate.getMinutes(),userinfo:{uid:data.data.user.user_id,username:_self.$store.state.user.name,face:data.data.user.icon},content:{url:data.data.text,length:data.data.length}}})
+						    _self.msgList.push({type:"user",msg:{id:lastid,type:"voice",time:nowDate.getHours()+":"+nowDate.getMinutes(),userinfo:{uid:data.data.user.user_id,username:data.data.user.name,face: data.data.user.icon},content:{url:data.data.text,length:data.data.length}}})
 							console.log("语音",data.data)
 							break;
 						case 2: 
-							console.log("图片",data.data) 
+							console.log("图片",data.data)  
 							break;
 						case 3:
 							_self.msgList.push({type:"system",msg:{id:lastid,type:"text",content:{text:data.data.text}}})
 							console.log("系统消息",data.data)
 							break;	
 					}
-					if(data.data.type != 3){
+					if (data.data.type != 3) {
 						//非自己的消息震动
-						if(data.data.user.user_id!=_self.$store.state.user.user_id){
-							console.log('振动');
-							uni.vibrateLong();
+						if (data.data.user.user_id != _self.$store.state.user.user_id) {
+							const innerAudioContext = uni.createInnerAudioContext();
+							innerAudioContext.autoplay = true;
+							innerAudioContext.src = '/static/music/click.mp3';
+							innerAudioContext.play()
+							innerAudioContext.onPlay(() => {
+							  console.log('开始播放');
+							});
+							innerAudioContext.onError((res) => {
+							  console.log(res.errMsg);
+							  console.log(res.errCode);
+							});
 						}
 					}
 					console.log('消息id' + lastid)
