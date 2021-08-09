@@ -242,19 +242,7 @@
 		},
 		onLoad(option) {
 			_self = this
-			switch (_self.$store.state.platform) {
-				case 'android':
-					console.log('运行Android上')
-					Vue.prototype.requestAndroidPermission("android.permission.RECORD_AUDIO",'麦克风')
-					break;
-				case 'ios':
-					Vue.prototype.requestIosPermission("record", "麦克风")
-					console.log('运行iOS上')
-					break;
-				default:
-					console.log('运行在开发者工具上')
-					break;
-			}	
+		
 			//进行链接
 			_self.connect()
 			
@@ -399,6 +387,22 @@
 				this.recordEnd(e);
 			})
 			// #endif
+			this.RECORDER.onError((e)=>{
+				console.log("录音失败")
+				switch (_self.$store.state.platform) {
+					case 'android':
+						console.log('运行Android上')
+						Vue.prototype.requestAndroidPermission("android.permission.RECORD_AUDIO",'麦克风')
+						break; 
+					case 'ios':
+						Vue.prototype.requestIosPermission("record", "麦克风")
+						console.log('运行iOS上')
+						break;
+					default:
+						console.log('运行在开发者工具上')
+						break;
+				}
+			})
 
 		},
 		onUnload() {

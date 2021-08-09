@@ -758,7 +758,7 @@
 					Vue.prototype.requestAndroidPermission("android.permission.RECORD_AUDIO",'麦克风')
 					break;
 				case 'ios':
-					Vue.prototype.requestIosPermission("record", "麦克风")
+					// Vue.prototype.requestIosPermission("record", "麦克风")
 					console.log('运行iOS上')
 					break;
 				default:
