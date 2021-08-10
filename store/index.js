@@ -104,8 +104,9 @@ const store = new Vuex.Store({
 				display: true,
 				platform: 0
 			},
+			
 			{
-				title: '视频下载',
+				title: '视频下载器',
 				name: '/pages/functions/WipeWatermark/WipeWatermark',
 				color: 'orange',
 				cuIcon: 'video',
@@ -113,6 +114,7 @@ const store = new Vuex.Store({
 				display: true,
 				platform: 0
 			},
+			
 			{
 				title: '振动器',
 				name: '/pages/functions/vibrate/vibrate',
@@ -298,7 +300,7 @@ const store = new Vuex.Store({
 				display: true,
 				platform: 0 //0通用1ios2andorid
 			
-			},
+			}, 
 			{
 				title: '聊天室',
 				name: '/pages/functions/chatRoom/select',
@@ -316,7 +318,16 @@ const store = new Vuex.Store({
 				describe: '官方',
 				display: true,
 				platform: 0 //0通用1ios2andorid
-			}  
+			},
+			{
+				title: '每日早报',
+				name: '/pages/functions/TheDailyMorning/TheDailyMorning',
+				color: 'calendar',
+				cuIcon: 'calendar',
+				describe: '官方',
+				display: true,
+				platform: 0 //0通用1ios2andorid
+			}    
 			// ,
 			// {
 			// 	title: '测试',
@@ -334,7 +345,7 @@ const store = new Vuex.Store({
 		vibrateIndex: 0, 
 		vibrateSpeed: 1,
 		platfrom: '',
-		version: '1.4.1'
+		version: '1.4.3'
 	},
 	mutations: {},
 	actions: {}

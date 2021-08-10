@@ -124,7 +124,7 @@
 		}, {
 			"path": "pages/functions/WipeWatermark/WipeWatermark",
 			"style": {
-				"navigationBarTitleText": "视频下载",
+				"navigationBarTitleText": "视频下载器",
 				"enablePullDownRefresh": false
 			}
 
@@ -537,6 +537,15 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "电子签名",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/functions/TheDailyMorning/TheDailyMorning",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "每日早报",
                 "enablePullDownRefresh": false
             }
             

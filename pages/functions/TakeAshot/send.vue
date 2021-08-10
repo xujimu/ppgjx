@@ -68,6 +68,7 @@
 					}
 				}).then(res => {
 					console.log(res)
+					_self.text = ''
 					if(res.data.code == 0){
 						uni.showToast({
 							icon: "success",

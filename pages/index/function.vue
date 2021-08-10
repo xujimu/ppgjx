@@ -60,10 +60,6 @@
 				uni.showLoading({
 					title: '加载中'
 				});
-				
-				uni.showLoading({
-					title: '加载中'
-				});
 				_self.xhttp.request({
 					url: "/user/feedback/v1/query", //仅为示例，并非真实接口地址。
 					method:"POST",
