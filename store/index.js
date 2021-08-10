@@ -105,15 +105,15 @@ const store = new Vuex.Store({
 				platform: 0
 			},
 			
-			{
-				title: '视频下载器',
-				name: '/pages/functions/WipeWatermark/WipeWatermark',
-				color: 'orange',
-				cuIcon: 'video',
-				describe: '官方',
-				display: true,
-				platform: 0
-			},
+			// {
+			// 	title: '视频下载器',
+			// 	name: '/pages/functions/WipeWatermark/WipeWatermark',
+			// 	color: 'orange',
+			// 	cuIcon: 'video',
+			// 	describe: '官方',
+			// 	display: true,
+			// 	platform: 0
+			// },
 			
 			{
 				title: '振动器',
@@ -301,7 +301,7 @@ const store = new Vuex.Store({
 				platform: 0 //0通用1ios2andorid
 			
 			}, 
-			{
+			{ 
 				title: '聊天室',
 				name: '/pages/functions/chatRoom/select',
 				color: 'pic',
@@ -327,7 +327,16 @@ const store = new Vuex.Store({
 				describe: '官方',
 				display: true,
 				platform: 0 //0通用1ios2andorid
-			}    
+			}
+			// {
+			// 	title: '图片水印',
+			// 	name: '/pages/functions/WaterMarking/WaterMarking',
+			// 	color: 'calendar',
+			// 	cuIcon: 'file',
+			// 	describe: '官方',
+			// 	display: true,
+			// 	platform: 0 //0通用1ios2andorid
+			// }     
 			// ,
 			// {
 			// 	title: '测试',
@@ -345,7 +354,7 @@ const store = new Vuex.Store({
 		vibrateIndex: 0, 
 		vibrateSpeed: 1,
 		platfrom: '',
-		version: '1.4.3'
+		version: '1.4.4'
 	},
 	mutations: {},
 	actions: {}

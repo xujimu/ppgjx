@@ -161,7 +161,6 @@
 				 cid: cid,
 				 access: ''//服务器加密秘钥协作开发者无需修改
 			  }
-			   
 			  console.log("发送请求拦截前",config)	
 			  return config
 			}, config => { // 可使用async await 做异步操作

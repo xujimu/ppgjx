@@ -6,7 +6,6 @@
 <template >
 	<view class="content" >
 		<zaudio theme="theme1"></zaudio>
-	
 		<view class="listbox" style="background-color: #FFFFFF;">
 			<view style="padding:10px">音频列表:</view>
 			<view v-for="(i, k) in audiolist" :key="k" class="list">

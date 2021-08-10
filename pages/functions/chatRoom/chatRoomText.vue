@@ -903,9 +903,9 @@
 							}
 						}
 						console.log('消息id' + lastid)
-						_self.$nextTick(function() {
-							_self.scrollToView = 'msg' + lastid; //跳转上次的第一行信息位置
-						});
+						// _self.$nextTick(function() {
+						// 	_self.scrollToView = 'msg' + lastid; //跳转上次的第一行信息位置
+						// });
 						// _self.data.push(data.data)
 						break;
 					case 1:
@@ -995,6 +995,8 @@
 					function(e){
 						switch(e.index){
 							case 1:
+								console.log("封禁1天")
+								console.log(user)
 								uni.sendSocketMessage({
 								      data: JSON.stringify({type: 'banned', day: 1,uid: user.uid,name: user.username})
 								});

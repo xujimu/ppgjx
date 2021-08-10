@@ -13,6 +13,8 @@
 <script>
     export default {
 		onLoad(option) {
+			console.log('链接',option.url)
+			this.url = option.url
 			uni.setNavigationBarTitle({
 			    title: '帮助'
 			});
@@ -43,7 +45,7 @@
                         color: '#00aaff'
                     }
                 },
-				url:'https://ppgjx.com/functions/course/divcalculate',
+				url:'',
 				name:''
             }
         }

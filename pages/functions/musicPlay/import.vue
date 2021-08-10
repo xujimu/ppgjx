@@ -12,7 +12,9 @@
 			<button :disabled="text != '' ? false:true" class="cu-btn block lg bg-white" @click="tap()">
 				<text class="cuIcon-command" ></text>开始导入</button>
 		</view>
-		
+		<view @click="navto('/pages/functions/help/help?url=https://ppgjx.com/functions/course/musicplay')" style="text-align: right;margin-right: 20rpx;">
+			<u-tag text="不会使用?" type="success" bg-color="#ffffff" border-color="#0081ff" color="#0081ff" />
+		</view>
 		<view class="cu-form-group " style="margin: 20rpx 20rpx;border-radius:18upx;">
 			<view style="text-align: center;margin: 0px auto;">
 				<view>单行导入格式</view>

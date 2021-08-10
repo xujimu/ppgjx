@@ -8,12 +8,12 @@
 
 		<view class="cu-bar bg-white solid-bottom">
 			<view class="action">
-				<text class="cuIcon-title text-blue"></text>视频链接
+				<text class="cuIcon-title text-blue"></text>请输入视频链接
 			</view>
 		</view>
 
 		<view class="cu-form-group " style="margin: 20rpx 20rpx;border-radius:18rpx;">
-			<textarea auto-height maxlength="-1" v-model="url" placeholder="请输入视频链接 仅支持MP4和部分流媒体"></textarea>
+			<textarea auto-height maxlength="-1" v-model="url" placeholder="请输入视频链接 仅支持MP4"></textarea>
 		</view>
 
 		<view v-if="playUrl">

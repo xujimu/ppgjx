@@ -124,7 +124,7 @@
 		}, {
 			"path": "pages/functions/WipeWatermark/WipeWatermark",
 			"style": {
-				"navigationBarTitleText": "视频下载器",
+				"navigationBarTitleText": "视频解析",
 				"enablePullDownRefresh": false
 			}
 
@@ -546,6 +546,24 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "每日早报",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/functions/WaterMarking/WaterMarking",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "图片水印",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/functions/help/help",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "帮助",
                 "enablePullDownRefresh": false
             }
             
