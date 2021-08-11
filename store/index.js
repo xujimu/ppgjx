@@ -327,16 +327,16 @@ const store = new Vuex.Store({
 				describe: '官方',
 				display: true,
 				platform: 0 //0通用1ios2andorid
-			}
-			// {
-			// 	title: '图片水印',
-			// 	name: '/pages/functions/WaterMarking/WaterMarking',
-			// 	color: 'calendar',
-			// 	cuIcon: 'file',
-			// 	describe: '官方',
-			// 	display: true,
-			// 	platform: 0 //0通用1ios2andorid
-			// }     
+			},
+			{
+				title: '图片水印',
+				name: '/pages/functions/WaterMarking/WaterMarking',
+				color: 'calendar',
+				cuIcon: 'file',
+				describe: '官方',
+				display: true,
+				platform: 0 //0通用1ios2andorid
+			}     
 			// ,
 			// {
 			// 	title: '测试',
@@ -354,7 +354,7 @@ const store = new Vuex.Store({
 		vibrateIndex: 0, 
 		vibrateSpeed: 1,
 		platfrom: '',
-		version: '1.4.4'
+		version: '1.4.5'
 	},
 	mutations: {},
 	actions: {}

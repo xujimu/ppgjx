@@ -91,70 +91,79 @@
 						textArr.push(item);
 					}
 				})
-				textArr.some(function(item, index) {
-					ctx.font = (item.font||'16px') + ' Arial'
-					ctx.shadowColor = item.shadowColor||'#000'
-					ctx.shadowOffsetX = item.shadowOffsetX||0;
-					ctx.shadowOffsetY = item.shadowOffsetY||0;
-					ctx.fillStyle = item.fillStyle||'#fff'
-					const fontWidth = ctx.measureText(item.content).width / 2; //获取文本宽度
-					let rotate = item.rotate||0
-					item.x = item.x||0
-					item.y = item.y||0
-					if(item.isRepeat){
-						item.repeatWidth = item.repeatWidth||_this.canvasWidth
-						item.repeatHeight = item.repeatHeight||_this.canvasHeight
-						item.distanceX = item.distanceX||60
-						item.distanceY = item.distanceY||50
-						ctx.rotate(-rotate * Math.PI / 180)
-						for(let i = item.x; i<item.repeatWidth; i+=item.distanceX) {
-							for(let j = item.y; j<item.repeatHeight; j+=item.distanceY) {
-							  // 填充文字，x 间距, y 间距
-							  console.log(item.x,item.y);
-							  ctx.fillText(item.content, i, j)
-							}
-						}
-						ctx.rotate(rotate * Math.PI / 180);
-					}else{
-						ctx.rotate(-rotate * Math.PI / 180)
-						ctx.fillText(item.content, item.x, item.y);
-						ctx.rotate(rotate * Math.PI / 180);
-					}
-				})
-				imageArr.some(function(item, index) {
-					uni.getImageInfo({
-						src: item.path,
-						success: function(reimg) {
-							let rotate = item.rotate||0
-							item.x = item.x||0
-							item.y = item.y||0
-							item.width = item.width||reimg.width / _this.pixelRatio
-							item.height = item.height||reimg.height / _this.pixelRatio
-							if(item.isRepeat){
-								item.repeatWidth = item.repeatWidth||_this.canvasWidth
-								item.repeatHeight = item.repeatHeight||_this.canvasHeight
-								item.distanceX = item.distanceX||60
-								item.distanceY = item.distanceY||50
-								ctx.rotate(-rotate * Math.PI / 180);
-								for(let i = item.x; i<item.repeatWidth; i+=item.distanceX) {
-									for(let j = item.y; j<item.repeatHeight; j+=item.distanceY) {
-									  // 填充文字，x 间距, y 间距
-									  console.log(item.x,item.y);
-									  ctx.drawImage(reimg.path, i, j, item.width, item.height)
-									}
+				if(textArr.length > 0){
+					console.log("文字无水印")
+					textArr.some(function(item, index) {
+						ctx.font = (item.font||'16px') + ' Arial'
+						ctx.shadowColor = item.shadowColor||'#000'
+						ctx.shadowOffsetX = item.shadowOffsetX||0;
+						ctx.shadowOffsetY = item.shadowOffsetY||0;
+						ctx.fillStyle = item.fillStyle||'#fff'
+						const fontWidth = ctx.measureText(item.content).width / 2; //获取文本宽度
+						let rotate = item.rotate||0
+						item.x = item.x||0
+						item.y = item.y||0
+						if(item.isRepeat){
+							item.repeatWidth = item.repeatWidth||_this.canvasWidth
+							item.repeatHeight = item.repeatHeight||_this.canvasHeight
+							item.distanceX = item.distanceX||60
+							item.distanceY = item.distanceY||50
+							ctx.rotate(-rotate * Math.PI / 180)
+							for(let i = item.x; i<item.repeatWidth; i+=item.distanceX) {
+								for(let j = item.y; j<item.repeatHeight; j+=item.distanceY) {
+								  // 填充文字，x 间距, y 间距
+								  // console.log(item.x,item.y);
+								  ctx.fillText(item.content, i, j)
 								}
-								ctx.rotate(rotate * Math.PI / 180);
-							}else{
-								ctx.rotate(-rotate * Math.PI / 180)
-								ctx.drawImage(reimg.path, item.x, item.y, item.width, item.height)
-								ctx.rotate(rotate * Math.PI / 180)
 							}
-							if (imageArr.length == index + 1) {
-								_this.otherGenerateBase64(options, ctx);
-							}
+							ctx.rotate(rotate * Math.PI / 180);
+						}else{
+							ctx.rotate(-rotate * Math.PI / 180)
+							ctx.fillText(item.content, item.x, item.y);
+							ctx.rotate(rotate * Math.PI / 180);
 						}
+						
 					})
-				})
+					_this.otherGenerateBase64(options, ctx);
+				}else{
+					imageArr.some(function(item, index) {
+						uni.getImageInfo({
+							src: item.path,
+							success: function(reimg) {
+								let rotate = item.rotate||0
+								item.x = item.x||0
+								item.y = item.y||0
+								item.width = item.width||reimg.width / _this.pixelRatio
+								item.height = item.height||reimg.height / _this.pixelRatio
+								if(item.isRepeat){
+									item.repeatWidth = item.repeatWidth||_this.canvasWidth
+									item.repeatHeight = item.repeatHeight||_this.canvasHeight
+									item.distanceX = item.distanceX||60
+									item.distanceY = item.distanceY||50
+									ctx.rotate(-rotate * Math.PI / 180);
+									for(let i = item.x; i<item.repeatWidth; i+=item.distanceX) {
+										for(let j = item.y; j<item.repeatHeight; j+=item.distanceY) {
+										  // 填充文字，x 间距, y 间距
+										  console.log(item.x,item.y);
+										  ctx.drawImage(reimg.path, i, j, item.width, item.height)
+										}
+									}
+									ctx.rotate(rotate * Math.PI / 180);
+								}else{
+									ctx.rotate(-rotate * Math.PI / 180)
+									ctx.drawImage(reimg.path, item.x, item.y, item.width, item.height)
+									ctx.rotate(rotate * Math.PI / 180)
+								}
+								if (imageArr.length == index + 1) {
+									_this.otherGenerateBase64(options, ctx);
+								}
+							}
+						})
+					})
+				}
+
+
+				
 			},
 			otherGenerateBase64(options, ctx) {
 				let _this = this;
@@ -168,7 +177,8 @@
 							const fileReader = new plus.io.FileReader()
 							fileReader.readAsDataURL(path)
 							fileReader.onloadend = (res) => { //读取文件成功完成的回调函数
-								_this.$emit("pBackImage",res.target.result);
+								var data = {base: res.target.result,path: savedFilePath}
+								_this.$emit("pBackImage",data);
 							}
 						}
 					})

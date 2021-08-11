@@ -1,17 +1,25 @@
 <template>
 	<view>
+		<view class="login-bg">
+			<view class="login-btn">
+				<input class="btn-class" v-model="text" style="height: 100rpx;">
+			</view>
+		</view>
 		<tnWaterMater @pBackImage="backImage" ref="childWaterMater"></tnWaterMater>
 		<view class="login-bg">
 			<view class="login-btn">
 				<button class="btn-class" @click="selectImg">选择图片</button>
-				<button class="btn-class" @click="addWaterBase64">加水印转base64</button>
+				<button class="btn-class" @click="addWaterBase64">加水印</button>
+				<button class="btn-class" @click="save" v-if="path">保存</button>
 				<text class="page-lable">结果:</text>
 				<view class="img-box">
 					<img :src="item" v-for="item in photoData">
 				</view>
+				
 			</view>
+		
 		</view>
-	</view>
+	</view> 
 </template>
 
 <script>
@@ -22,41 +30,56 @@
 		},
 		data() {
 			return {
-				photoData: ''
+				photoData: '',
+				text: '皮皮工具箱',
+				path: ''
 			}
 		},
 		onLoad() {
-			
-		},
+			switch(_self.$store.state.platform){
+			    case 'android':
+			       console.log('运行Android上')
+				   // Vue.prototype.requestAndroidPermission("android.permission.READ_EXTERNAL_STORAGE")
+				   // Vue.prototype.requestAndroidPermission("android.permission.WRITE_EXTERNAL_STORAGE")
+			       break;
+			    case 'ios':
+				  Vue.prototype.requestIosPermission("photoLibrary","相册")
+			       console.log('运行iOS上')
+			       break;
+			    default:
+			       console.log('运行在开发者工具上')
+			       break;
+			}
+		}, 
 		methods: {
+			save(){
+				uni.saveImageToPhotosAlbum({
+					filePath: this.path,
+					success: function () {
+						uni.showToast({
+							title: '保存完毕',
+							duration: 2000
+						});
+						
+					}
+				});
+			},
 			backImage(data){
-				console.log(data.length);
-				this.photoData.push(data);
+				console.log(data); 
+				this.path = data.path
+				this.photoData.push(data.base);
 			},
 			addWaterBase64(){
+			
 				let _this = this;
 				let model = {};
 				model.url = _this.photoData[0];
 				// model.maxSize = 100;
 				model.watermark = [
 					{
-						type: 'image',
-						path: '/static/img/2048.jpg',
-						x: 0,
-						y: 0,
-						width: 20,
-						height: 20,
-						rotate: 0,
-						textAlign: 'top',
-						textBaseline: 'top',
-						repeatWidth: 1500,
-						repeatHeight: 2000,
-						isRepeat: true
-					},
-					{
 						type: 'text',
 						fillStyle: 'rgba(250, 250, 250, 1)',
-						content: '我是水印哈哈哈',
+						content: this.text,
 						font: '6px',
 						x: 0,
 						y: 0,
@@ -70,8 +93,10 @@
 					}
 				];
 				this.$refs.childWaterMater.addWaterMark(model);
+				
 			},
 			selectImg(){
+				this.photoData = ''
 				let _this = this;
 				uni.chooseImage({
 					count: 1, //默认9
