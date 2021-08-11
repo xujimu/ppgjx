@@ -338,9 +338,9 @@
 						}
 					}
 					console.log('消息id' + lastid)
-					// _self.$nextTick(function() {
-					// 	_self.scrollToView = 'msg'+ lastid;//跳转上次的第一行信息位置
-					// });
+					_self.$nextTick(function() {
+						_self.scrollToView = 'msg'+ lastid;//跳转上次的第一行信息位置
+					});
 					// _self.data.push(data.data)
 					break;
 				  case 1:

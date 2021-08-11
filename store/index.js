@@ -105,15 +105,7 @@ const store = new Vuex.Store({
 				platform: 0
 			},
 			
-			// {
-			// 	title: '视频下载器',
-			// 	name: '/pages/functions/WipeWatermark/WipeWatermark',
-			// 	color: 'orange',
-			// 	cuIcon: 'video',
-			// 	describe: '官方',
-			// 	display: true,
-			// 	platform: 0
-			// },
+			
 			
 			{
 				title: '振动器',
@@ -336,7 +328,25 @@ const store = new Vuex.Store({
 				describe: '官方',
 				display: true,
 				platform: 0 //0通用1ios2andorid
-			}     
+			},
+			{
+				title: 'MP4下载',
+				name: '/pages/functions/WipeWatermark/WipeWatermark',
+				color: 'orange',
+				cuIcon: 'video',
+				describe: '官方',
+				display: true,
+				platform: 0
+			},
+			{
+				title: '拍照翻译',
+				name: '/pages/functions/PhotoTranslation/PhotoTranslation',
+				color: 'orange',
+				cuIcon: 'video',
+				describe: '官方',
+				display: true,
+				platform: 0
+			}
 			// ,
 			// {
 			// 	title: '测试',

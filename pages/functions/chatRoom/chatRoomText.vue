@@ -10,7 +10,7 @@
 						<view class="rect1"></view>
 						<view class="rect2"></view>
 						<view class="rect3"></view> 
-						<view class="rect4"></view>
+						<view class="rect4"></view> 
 						<view class="rect5"></view>
 					</view>
 				</view> -->
@@ -857,7 +857,7 @@
 										time: nowDate.getHours() + ":" + nowDate.getMinutes(),
 										userinfo: {
 											uid: data.data.user.user_id,
-											username: _self.$store.state.user.name,
+											username: data.data.user.name,
 											face: data.data.user.icon
 										},
 										content: {
@@ -903,9 +903,9 @@
 							}
 						}
 						console.log('消息id' + lastid)
-						// _self.$nextTick(function() {
-						// 	_self.scrollToView = 'msg' + lastid; //跳转上次的第一行信息位置
-						// });
+						_self.$nextTick(function() {
+							_self.scrollToView = 'msg' + lastid; //跳转上次的第一行信息位置
+						});
 						// _self.data.push(data.data)
 						break;
 					case 1:

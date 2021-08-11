@@ -124,7 +124,7 @@
 		}, {
 			"path": "pages/functions/WipeWatermark/WipeWatermark",
 			"style": {
-				"navigationBarTitleText": "视频解析",
+				"navigationBarTitleText": "MP4下载",
 				"enablePullDownRefresh": false
 			}
 
@@ -564,6 +564,15 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "帮助",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/functions/PhotoTranslation/PhotoTranslation",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "拍照翻译",
                 "enablePullDownRefresh": false
             }
             
