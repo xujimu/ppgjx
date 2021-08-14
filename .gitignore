@@ -4,3 +4,5 @@ unpackage/
 .DS_Store
 .hbuilderx/
 config/
+uni_modules/
+uniCloud-aliyun/

@@ -577,6 +577,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/index/ranking",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "排行榜",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
@@ -593,6 +602,12 @@
 				"text": "功能",
 				"iconPath": "static/index/tabBarFun.png",
 				"selectedIconPath": "static/index/tabBarFunSelect.png"
+			},
+			{
+				"pagePath": "pages/index/ranking",
+				"text": "排行榜", 
+				"iconPath": "static/index/ranking.png",
+				"selectedIconPath": "static/index/rankingselect.png"
 			},
 			{
 				"pagePath": "pages/index/my",
