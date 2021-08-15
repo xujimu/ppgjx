@@ -364,7 +364,7 @@ const store = new Vuex.Store({
 		vibrateIndex: 0, 
 		vibrateSpeed: 1,
 		platfrom: '',
-		version: '1.4.6'
+		version: '1.4.7'
 	},
 	mutations: {},
 	actions: {}

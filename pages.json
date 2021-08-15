@@ -582,7 +582,7 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "排行榜",
-                "enablePullDownRefresh": false
+                "enablePullDownRefresh": true
             }
             
         }

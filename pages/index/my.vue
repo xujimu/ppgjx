@@ -94,13 +94,12 @@
 				
 				if(_self.$store.state.user){
 					var userId = _self.$store.state.user.user_id
-				
 					// 调用后会显示 loading 界面
 					AD.show({
-					  adpid: 123, // HBuilder 基座测试广告位
+					  adpid: '', // HBuilder 基座测试广告位
 					  adType: "RewardedVideo",
 					  urlCallback: {  
-						 userId: userId
+						 userId: userId + ""
 					  } 
 					}, (res) => {
 					  // 用户点击了【关闭广告】按钮

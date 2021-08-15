@@ -2,8 +2,8 @@
     "name" : "皮皮工具箱",
     "appid" : "__UNI__71ADDDF",
     "description" : "",
-    "versionName" : "1.4.6",
-    "versionCode" : 146,
+    "versionName" : "1.4.7",
+    "versionCode" : 147,
     "transformPx" : false,
     /* 5+App特有相关 */
     "app-plus" : {
@@ -99,8 +99,6 @@
             "sdkConfigs" : {
                 "ad" : {
                     "gdt" : {},
-                    "csj" : {},
-                    "360" : {},
                     "ks" : {}
                 },
                 "push" : {
