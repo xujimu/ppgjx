@@ -346,6 +346,15 @@ const store = new Vuex.Store({
 				describe: '官方',
 				display: true,
 				platform: 0
+			},
+			{
+				title: '获取照片信息',
+				name: '/pages/functions/GetImageData/GetImageData',
+				color: 'orange',
+				cuIcon: 'video',
+				describe: 'wihs',
+				display: true,
+				platform: 0
 			}
 			// ,
 			// {

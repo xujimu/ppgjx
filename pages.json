@@ -577,6 +577,15 @@
             }
             
         }
+		,{
+            "path" : "pages/functions/GetImageData/GetImageData",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "获取照片信息",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
