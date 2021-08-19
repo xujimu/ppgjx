@@ -356,6 +356,15 @@ const store = new Vuex.Store({
 				display: true,
 				platform: 0
 			}
+			// {
+			// 	title: '拍照翻译',
+			// 	name: '/pages/functions/PhotoTranslation/PhotoTranslation',
+			// 	color: 'orange',
+			// 	cuIcon: 'video',
+			// 	describe: '官方',
+			// 	display: true,
+			// 	platform: 0
+			// }
 			// ,
 			// {
 			// 	title: '测试',
@@ -373,7 +382,7 @@ const store = new Vuex.Store({
 		vibrateIndex: 0, 
 		vibrateSpeed: 1,
 		platfrom: '',
-		version: '1.4.5'
+		version: '1.4.7'
 	},
 	mutations: {},
 	actions: {}
