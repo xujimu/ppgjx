@@ -12,6 +12,7 @@
   "dependencies": {
     "@antv/g2": "^4.0.15",
     "uview": "^0.1.0",
+    "exif-js": "^2.3.0",
     "uview-ui": "^1.8.4"
   }
 }
