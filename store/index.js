@@ -337,6 +337,15 @@ const store = new Vuex.Store({
 				describe: '官方',
 				display: true,
 				platform: 0
+			},
+			{
+				title: '麻将定缺',
+				name: '/pages/functions/Mahjong/Mahjong',
+				color: 'orange',
+				cuIcon: 'game', 
+				describe: '皮友:撩到腿软提供',
+				display: true,
+				platform: 0
 			}
 			// {
 			// 	title: '拍照翻译',

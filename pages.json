@@ -592,6 +592,15 @@
 		        "navigationBarTitleText": "排行榜",
 		        "enablePullDownRefresh": true
 		    }
+		},
+		{
+			"path" : "pages/functions/Mahjong/Mahjong",
+			"style" :                                                                                    
+			{
+				"navigationBarTitleText": "麻将定缺",
+				"enablePullDownRefresh": false
+			}
+				
 		}
     ],
 	"globalStyle": {
