@@ -23,6 +23,7 @@
 </template>
 
 <script>
+	var _self
 	import tnWaterMater from '../../../components/tn-waterMark/index.vue'
 	export default {
 		components:{
@@ -36,6 +37,7 @@
 			}
 		},
 		onLoad() {
+			_self = this
 			switch(_self.$store.state.platform){
 			    case 'android':
 			       console.log('运行Android上')

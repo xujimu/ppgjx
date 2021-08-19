@@ -124,7 +124,7 @@
 						success(res) {
 							// console.log(res.tempFilePath, 'canvas生成图片地址');
 							uni.showToast({
-								title: '以保存'
+								title: '已保存'
 							});
 							//保存到系统相册
 							uni.saveImageToPhotosAlbum({

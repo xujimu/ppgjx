@@ -120,8 +120,8 @@
 			// 获取图片信息
 			getImgLocation() {
 				let _this = this
-				console.log(this.$refs.img)
-				EXIF.getData(this.$refs.img, function() {
+				// console.log(_this.$refs.img)
+				EXIF.getData(_this.$refs.img, function() {
 					//图片包含的所有信息(例：拍照方向、相机设备型号、拍摄时间、ISO 感光度、GPS 地理位置等数据。)
 					let imgAllInfo = EXIF.getAllTags(this);
 					// console.log(imgAllInfo)
