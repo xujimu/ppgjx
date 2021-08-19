@@ -25,6 +25,7 @@
 				<u-cell-item  icon="setting" title="设置" @click="navto('/pages/index/setting/setting')"></u-cell-item>
 				<u-cell-item  icon="github-circle-fill" title="开发者协作计划" @click="navto('/pages/index/github')"></u-cell-item>
 				<u-cell-item  icon="server-man" title="观看广告支持作者" @click="showAd()"></u-cell-item>
+				<u-cell-item  icon="chat" title="客服微信" @click="add()"></u-cell-item>
 			</u-cell-group>
 		</view>
 		
@@ -90,8 +91,16 @@
 			// }
 		}, 
 		methods: { 
+			add(){
+				uni.setClipboardData({
+				    data: 'x2524931333',
+				    success: function () {
+				        console.log('success');
+				    }
+				});
+			},
 			showAd(){
-				
+				console.log("点击广告") 
 				if(_self.$store.state.user){
 					var userId = _self.$store.state.user.user_id
 					// 调用后会显示 loading 界面

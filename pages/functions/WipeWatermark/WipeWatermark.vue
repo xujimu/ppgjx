@@ -13,7 +13,7 @@
 		</view>
 
 		<view class="cu-form-group " style="margin: 20rpx 20rpx;">
-			<textarea auto-height maxlength="-1" v-model="url" placeholder="请输入视频链接 仅支持MP4"></textarea>
+			<textarea auto-height maxlength="-1" v-model="url" placeholder="请输入视频链接"></textarea>
 		</view>
 
 		<view v-if="playUrl">

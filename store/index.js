@@ -330,23 +330,23 @@ const store = new Vuex.Store({
 				platform: 0 //0通用1ios2andorid
 			},
 			{
-				title: 'MP4下载',
+				title: '视频提取',
 				name: '/pages/functions/WipeWatermark/WipeWatermark',
 				color: 'orange',
-				cuIcon: 'video',
+				cuIcon: 'video', 
 				describe: '官方',
 				display: true,
 				platform: 0
 			},
-			{
-				title: '拍照翻译',
-				name: '/pages/functions/PhotoTranslation/PhotoTranslation',
-				color: 'orange',
-				cuIcon: 'video',
-				describe: '官方',
-				display: true,
-				platform: 0
-			},
+			// {
+			// 	title: '拍照翻译',
+			// 	name: '/pages/functions/PhotoTranslation/PhotoTranslation',
+			// 	color: 'orange',
+			// 	cuIcon: 'video',
+			// 	describe: '官方',
+			// 	display: true,
+			// 	platform: 0
+			// },
 			{
 				title: '获取照片信息',
 				name: '/pages/functions/GetImageData/GetImageData',

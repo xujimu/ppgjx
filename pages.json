@@ -124,7 +124,7 @@
 		}, {
 			"path": "pages/functions/WipeWatermark/WipeWatermark",
 			"style": {
-				"navigationBarTitleText": "MP4下载",
+				"navigationBarTitleText": "视频提取",
 				"enablePullDownRefresh": false
 			}
 
@@ -583,15 +583,16 @@
             {
                 "navigationBarTitleText": "获取照片信息",
                 "enablePullDownRefresh": false
-        ,{
-            "path" : "pages/index/ranking",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "排行榜",
-                "enablePullDownRefresh": true
-            }
-            
-        }
+			}
+        },
+		{
+		    "path" : "pages/index/ranking",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "排行榜",
+		        "enablePullDownRefresh": true
+		    }
+		}
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
