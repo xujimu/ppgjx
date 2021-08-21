@@ -33,33 +33,33 @@
 		onLoad() {
 			_self = this
 			//判断有没有设置隐藏功能
-			var funlist = uni.getStorageSync('funlist');
-			if (funlist) {
-				console.log("有隐藏常用功能")
-				_self.$store.state.funlist = funlist
-				//兼容以前的版本的设备
-				for (var i=0;i<_self.$store.state.funlist.length;i++)
-				{ 
-				    switch (_self.$store.state.platform){	 
-						case 'android':
-							if(_self.$store.state.funlist[i].platform == 1){
-								_self.$store.state.funlist.splice(i,1)
-								i--
-							}
-							break; 
-						case 'ios': 
-							if(_self.$store.state.funlist[i].platform == 2){
-								_self.$store.state.funlist.splice(i,1)
-								i--
-							}
-							break
-						default:
-							break;
-					}
-				}
-			} else {
-				console.log("无隐藏常用功能")
-			}
+			// var funlist = uni.getStorageSync('funlist');
+			// if (funlist) {
+			// 	console.log("有隐藏常用功能")
+			// 	_self.$store.state.funlist = funlist
+			// 	//兼容以前的版本的设备
+			// 	for (var i=0;i<_self.$store.state.funlist.length;i++)
+			// 	{ 
+			// 	    switch (_self.$store.state.platform){	 
+			// 			case 'android':
+			// 				if(_self.$store.state.funlist[i].platform == 1){
+			// 					_self.$store.state.funlist.splice(i,1)
+			// 					i--
+			// 				}
+			// 				break; 
+			// 			case 'ios': 
+			// 				if(_self.$store.state.funlist[i].platform == 2){
+			// 					_self.$store.state.funlist.splice(i,1)
+			// 					i--
+			// 				}
+			// 				break
+			// 			default:
+			// 				break;
+			// 		}
+			// 	}
+			// } else {
+			// 	console.log("无隐藏常用功能")
+			// }
 			
 			
 		},

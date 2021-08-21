@@ -20,7 +20,7 @@
 		watch: {
 			'$store.state.funlist':{ // plan1.0
 				handler(newName, oldName) {
-					 console.log("设置新工",newName)
+					
 					 uni.setStorageSync('funlist', newName);
 					
 				},
