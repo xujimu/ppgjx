@@ -329,15 +329,15 @@ const store = new Vuex.Store({
 				display: true,
 				platform: 0 //0通用1ios2andorid
 			},
-			{
-				title: '视频提取',
-				name: '/pages/functions/WipeWatermark/WipeWatermark',
-				color: 'orange',
-				cuIcon: 'video',
-				describe: '官方',
-				display: true,
-				platform: 0,
-			},
+			// {
+			// 	title: '视频提取',
+			// 	name: '/pages/functions/WipeWatermark/WipeWatermark',
+			// 	color: 'orange',
+			// 	cuIcon: 'video',
+			// 	describe: '官方',
+			// 	display: true,
+			// 	platform: 0,
+			// },
 			{
 				title: '麻将定缺',
 				name: '/pages/functions/Mahjong/Mahjong',
@@ -382,7 +382,7 @@ const store = new Vuex.Store({
 		vibrateIndex: 0,
 		vibrateSpeed: 1,
 		platfrom: '',
-		version: '1.4.7'
+		version: '1.5.2'
 	},
 	mutations: {},
 	actions: {}

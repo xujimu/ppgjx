@@ -197,6 +197,27 @@
 			  return Promise.reject(response)
 			})
 			
+			_self.xhttp.request({
+				url: "/functions/index/init", //仅为示例，并非真实接口地址。
+				method:"POST",
+				data: {
+					
+				},
+				header:{
+					'Content-Type':'application/x-www-form-urlencoded'
+				}
+			}).then(res => {
+				console.log("初始化",res.data.data)
+				if(res.data.code == 0){
+					
+					_self.$store.state.funlist  = $.unique(_self.$store.state.funlist.concat(res.data.data))
+					console.log(_self.$store.state.funlist)
+				}
+			}).catch(err => {
+			})
+			
+			
+			
 	
 			
 		},
@@ -269,10 +290,13 @@
 						'Content-Type':'application/x-www-form-urlencoded'
 					}
 				}).then(res => {
-				
+					
 				}).catch(err => {
 				})
 			}
+			
+
+			
 			plus.sqlite.openDatabase({
 				name: 'ppgjx',
 				path: '_doc/ppgjx.db',

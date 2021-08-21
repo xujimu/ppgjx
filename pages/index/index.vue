@@ -60,6 +60,8 @@
 			} else {
 				console.log("无隐藏常用功能")
 			}
+			
+			
 		},
 		onShow() {
 			console.log("显示")
