@@ -104,9 +104,9 @@ const store = new Vuex.Store({
 				display: true,
 				platform: 0
 			},
-			
-			
-			
+
+
+
 			{
 				title: '振动器',
 				name: '/pages/functions/vibrate/vibrate',
@@ -261,7 +261,7 @@ const store = new Vuex.Store({
 				describe: '官方',
 				display: true,
 				platform: 0 //0通用1ios2andorid
-			
+            
 			},
 			{
 				title: '经期记录',
@@ -271,7 +271,7 @@ const store = new Vuex.Store({
 				describe: '皮友:撩到腿软提供',
 				display: true,
 				platform: 0 //0通用1ios2andorid
-			
+
 			},
 			{
 				title: '2048',
@@ -281,7 +281,7 @@ const store = new Vuex.Store({
 				describe: '皮友:撩到腿软提供',
 				display: true,
 				platform: 0 //0通用1ios2andorid
-			
+
 			},
 			{
 				title: '扫雷',
@@ -291,9 +291,9 @@ const store = new Vuex.Store({
 				describe: '皮友:撩到腿软提供',
 				display: true,
 				platform: 0 //0通用1ios2andorid
-			
-			}, 
-			{ 
+
+			},
+			{
 				title: '聊天室',
 				name: '/pages/functions/chatRoom/select',
 				color: 'pic',
@@ -330,41 +330,23 @@ const store = new Vuex.Store({
 				platform: 0 //0通用1ios2andorid
 			},
 			{
-				title: '视频提取',
+				title: 'MP4下载',
 				name: '/pages/functions/WipeWatermark/WipeWatermark',
 				color: 'orange',
-				cuIcon: 'video', 
+				cuIcon: 'video',
 				describe: '官方',
 				display: true,
-				platform: 0
+				platform: 0,
 			},
 			{
-				title: '麻将定缺',
-				name: '/pages/functions/Mahjong/Mahjong',
+				title: '年龄计算器',
+				name: '/pages/functions/ageCalculator/ageCalculator',
 				color: 'orange',
-				cuIcon: 'game', 
-				describe: '皮友:撩到腿软提供',
+				cuIcon: 'time',
+				describe: '皮友:山海经本精提供',
 				display: true,
 				platform: 0
 			}
-			// {
-			// 	title: '拍照翻译',
-			// 	name: '/pages/functions/PhotoTranslation/PhotoTranslation',
-			// 	color: 'orange',
-			// 	cuIcon: 'video',
-			// 	describe: '官方',
-			// 	display: true,
-			// 	platform: 0
-			// },
-			// {
-			// 	title: '获取照片信息',
-			// 	name: '/pages/functions/GetImageData/GetImageData',
-			// 	color: 'orange',
-			// 	cuIcon: 'video',
-			// 	describe: 'wihs',
-			// 	display: true,
-			// 	platform: 0
-			// }
 			// {
 			// 	title: '拍照翻译',
 			// 	name: '/pages/functions/PhotoTranslation/PhotoTranslation',
@@ -383,15 +365,15 @@ const store = new Vuex.Store({
 			// 	describe: '官方',
 			// 	display: true,
 			// 	platform: 0 //0通用1ios2andorid
-			
+
 			// }
 		],
 		flashlightIndex: 0,
-		flashlightSpeed: 1, 
-		vibrateIndex: 0, 
+		flashlightSpeed: 1,
+		vibrateIndex: 0,
 		vibrateSpeed: 1,
 		platfrom: '',
-		version: '1.5.1'
+		version: '1.4.7'
 	},
 	mutations: {},
 	actions: {}
