@@ -591,6 +591,15 @@
             }
 
         }
+        ,{
+            "path" : "pages/index/adList",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "赞助商广告",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
     "globalStyle": {
         "navigationBarTextStyle": "white",

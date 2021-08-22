@@ -18,6 +18,7 @@
 			uni.setNavigationBarTitle({
 			    title: '帮助'
 			});
+
 			var top;
 			var systemInfo = uni.getSystemInfoSync()
 			if (systemInfo.platform == 'android') {
