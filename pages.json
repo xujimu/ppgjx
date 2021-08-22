@@ -600,6 +600,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/functions/xbw/xbw",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "小霸王游戏",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
     "globalStyle": {
         "navigationBarTextStyle": "white",

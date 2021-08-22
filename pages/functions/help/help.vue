@@ -18,7 +18,11 @@
 			uni.setNavigationBarTitle({
 			    title: '帮助'
 			});
-
+			if(option.title){
+				uni.setNavigationBarTitle({
+				    title: option.title
+				});
+			}
 			var top;
 			var systemInfo = uni.getSystemInfoSync()
 			if (systemInfo.platform == 'android') {

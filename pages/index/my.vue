@@ -25,7 +25,7 @@
 				<u-cell-item  icon="setting" title="设置" @click="navto('/pages/index/setting/setting')"></u-cell-item>
 				<u-cell-item  icon="github-circle-fill" title="开发者协作计划" @click="navto('/pages/index/github')"></u-cell-item>
 				<u-cell-item  icon="server-man" title="观看广告支持作者" @click="showAd()"></u-cell-item>
-				<u-cell-item  icon="cut" title="赞助商广告 观看次数+20 每天仅一次" @click="navto('/pages/index/adList')"></u-cell-item>
+				<u-cell-item  icon="cut" title="赞助商广告 观看次数+20 每天仅一次" @click="showAds()"></u-cell-item>
 				<u-cell-item  icon="chat" title="客服微信以及小工具定制" @click="add()"></u-cell-item>
 			</u-cell-group>
 		</view>
@@ -92,6 +92,17 @@
 			// }
 		}, 
 		methods: { 
+			showAds(){
+				if(_self.$store.state.user){
+					_self.navto('/pages/index/adList')
+				}else{
+					plus.nativeUI.alert('请先登录', function(){
+						}, "提示", "好的");
+						uni.switchTab({
+							url: '/pages/index/my'
+						});
+				}
+			}, 
 			add(){
 				uni.setClipboardData({
 				    data: 'x2524931333',
