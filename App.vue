@@ -207,18 +207,24 @@
 					'Content-Type':'application/x-www-form-urlencoded'
 				}
 			}).then(res => {
-				console.log("初始化",res.data.data)
-				if(res.data.code == 0){
-					
-					_self.$store.state.funlist  = $.unique(_self.$store.state.funlist.concat(res.data.data))
-					console.log(_self.$store.state.funlist)
+				console.log("初始化",res) 
+				if(res.data.code == 0){ 
+					var funlist = _self.$store.state.funlist
+					var newFunlist = res.data.data
+					for (var i = 0; i < newFunlist.length; i++) {
+						for (var j = 0; j < funlist.length; j++) {
+							if(newFunlist[i].title == funlist[j].title){
+								console.log("相等")
+								break
+							}
+							if(j == funlist.length - 1){
+								funlist.push(newFunlist[i])
+							}
+						}
+					}
 				}
 			}).catch(err => {
 			})
-			
-			
-			
-	
 			
 		},
 		onShow: function() {
