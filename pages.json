@@ -583,6 +583,8 @@
             {
                 "navigationBarTitleText": "获取照片信息",
                 "enablePullDownRefresh": false
+			}
+			}
         ,{
             "path" : "pages/index/ranking",
             "style" :                                                                                    
