@@ -23,7 +23,8 @@
 				<u-cell-item  icon="order" title="BUG反馈" @click="navto('/pages/index/feedback')"></u-cell-item>
 				<u-cell-item icon="thumb-up" title="App Store评分" @click="appStore()" v-if="ios"></u-cell-item>
 				<u-cell-item  icon="setting" title="设置" @click="navto('/pages/index/setting/setting')"></u-cell-item>
-				 <u-cell-item  icon="github-circle-fill" title="开发者协作计划" @click="navto('/pages/index/github')"></u-cell-item>
+				<u-cell-item  icon="github-circle-fill" title="开发者协作计划" @click="navto('/pages/index/github')"></u-cell-item>
+				<u-cell-item  icon="server-man" title="观看广告支持作者" @click="showAd()"></u-cell-item>
 			</u-cell-group>
 		</view>
 		
@@ -31,12 +32,29 @@
 </template>
 
 <script>
+	
+	import AD from "../../static/js/ad.js"
+	
 	var _self;
+	var rewardedVideoAd;
 	export default {
 		data() {
 			return {
 				ios: false
 			}
+		},
+		onReady() {
+			 //  rewardedVideoAd = uni.createRewardedVideoAd({ adpid: '1507000689' }) // 仅用于HBuilder基座调试 adpid: '1507000689'
+			 //  rewardedVideoAd.onLoad(() => {
+				// console.log('onLoad event')
+				// // 当激励视频被关闭时，默认预载下一条数据，加载完成时仍然触发 `onLoad` 事件
+			 //  })
+			 //  rewardedVideoAd.onError((err) => {
+				// console.log('onError event', err)
+			 //  })
+			 //  rewardedVideoAd.onClose((res) => {
+				// console.log('onClose event', res)
+			 //  })
 		},
 		onLoad() {
 			_self = this
@@ -52,10 +70,67 @@
 					break;
 			}
 		},
-		onShow() {  
-
-		},
-		methods: {
+		onShow() {    
+			// if(_self.$store.state.user){
+			// 	_self.xhttp.request({
+			// 		url: "/user/user/v1/updateUserInfo", //仅为示例，并非真实接口地址。
+			// 		header:{
+			// 			'Content-Type':'application/x-www-form-urlencoded'
+			// 		}
+			// 	}).then(res => {
+			// 		console.log(res)
+			// 		if(res.data.code == 0){
+			// 			uni.setStorageSync('user', res.data.data);
+			// 			_self.$store.state.user = res.data.data 
+			// 		}
+					 
+			// 	}).catch(err => {
+					
+			// 	})
+			// }
+		}, 
+		methods: { 
+			showAd(){
+				
+				if(_self.$store.state.user){
+					var userId = _self.$store.state.user.user_id
+					// 调用后会显示 loading 界面
+					AD.show({
+					  adpid: '', // HBuilder 基座测试广告位
+					  adType: "RewardedVideo",
+					  urlCallback: {  
+						 userId: userId + ""
+					  } 
+					}, (res) => {
+					  // 用户点击了【关闭广告】按钮
+					  if (res && res.isEnded) {
+						  console.log(res)
+						  plus.nativeUI.toast("感谢您的支持");
+						 console.log("onClose " + res.isEnded);
+					  } else {
+						   plus.nativeUI.toast("广告中途退出,本次观看广告将不会计入排行榜");
+						// 播放中途退出
+						console.log("onClose " + res.isEnded);
+					  }
+					}, (err) => {
+					  // 广告加载错误
+					  console.log(err)
+					  if(err.code == -5005){
+						  plus.nativeUI.toast("今日广告次数已到上限,请明天再来吧");
+					  }else{
+						  plus.nativeUI.toast("广告加载失败");
+					  }
+					})
+				}else{
+					plus.nativeUI.alert('请先登录', function(){
+						}, "提示", "好的");
+						uni.switchTab({
+							url: '/pages/index/my'
+						});
+				}
+				
+				
+			},
 			skip:function(){
 				if(_self.$store.state.user == null){
 					_self.navto('/pages/index/login')

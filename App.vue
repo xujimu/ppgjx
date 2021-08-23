@@ -146,7 +146,6 @@
 				 }
 			}); 
 			 
-	
 			
 			//发送请求拦截前
 			_self.xhttp.interceptors.request.use((config) => { // 可使用async await 做异步操作

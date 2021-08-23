@@ -583,6 +583,12 @@
             {
                 "navigationBarTitleText": "获取照片信息",
                 "enablePullDownRefresh": false
+        ,{
+            "path" : "pages/index/ranking",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "排行榜",
+                "enablePullDownRefresh": true
             }
             
         }
@@ -602,6 +608,12 @@
 				"text": "功能",
 				"iconPath": "static/index/tabBarFun.png",
 				"selectedIconPath": "static/index/tabBarFunSelect.png"
+			},
+			{
+				"pagePath": "pages/index/ranking",
+				"text": "排行榜", 
+				"iconPath": "static/index/ranking.png",
+				"selectedIconPath": "static/index/rankingselect.png"
 			},
 			{
 				"pagePath": "pages/index/my",
