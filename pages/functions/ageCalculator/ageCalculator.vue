@@ -5,104 +5,126 @@
 -->
 <template>
 	<view class="wrap">
-		<view v-if='isShowResult' class="text-white ipt-info">
-			<view>
-				<view class="ipt-info-item">
-					昵称
-					<view class="text-green">
-						<input :value="nickname" placeholder="输入昵称" @input="nameChange" class="ipt-info-item-ipt" />
+		<view class="wrap" v-if="isShowList">
+			<view v-if='isShowResult' class="text-white ipt-info">
+				<view>
+					<view class="ipt-info-item">
+						昵称
+						<view class="text-green">
+							<input :value="nickname" placeholder="输入昵称" @input="nameChange" class="ipt-info-item-ipt" />
+						</view>
+					</view>
+					<view class="ipt-info-item">
+						生日
+						<view class="text-green">
+							<text @click="showCalendar">{{date}}</text>
+						</view>
+					</view>
+					<view class="ipt-info-item">
+						出生时辰
+						<view class="text-green">
+							<picker mode="selector" :range="timeArr" :value="timeValue" @change='timeChange'>
+								{{timeArr[timeValue]}}
+							</picker>
+						</view>
+					</view>
+					<view class="ipt-info-item">
+						预计寿命
+						<view class="text-green">
+							<picker mode="selector" :range="lifeRange" :value="lifeValue" @change='lifeChange'>
+								{{lifeRange[lifeValue]}}
+							</picker>
+						</view>
+					</view>
+					<view class="ipt-info-item">
+						<view>生辰八字五行<text class="text-xs text-gray">(分享须谨慎)</text></view>
+						<view class="text-green">
+							<switch @change="switchChange" :checked="switchBz" />
+						</view>
 					</view>
 				</view>
-				<view class="ipt-info-item">
-					生日
-					<view class="text-green">
-						<text @click="showCalendar">{{date}}</text>
-					</view>
-				</view>
-				<view class="ipt-info-item">
-					出生时辰
-					<view class="text-green">
-						<picker mode="selector" :range="timeArr" :value="timeValue" @change='timeChange'>
-							{{timeArr[timeValue]}}
-						</picker>
-					</view>
-				</view>
-				<view class="ipt-info-item">
-					预计寿命
-					<view class="text-green">
-						<picker mode="selector" :range="lifeRange" :value="lifeValue" @change='lifeChange'>
-							{{lifeRange[lifeValue]}}
-						</picker>
-					</view>
-				</view>
-				<view class="ipt-info-item">
-					<view>生辰八字五行<text class="text-xs text-gray">(分享须谨慎)</text></view>
-					<view class="text-green">
-						<switch @change="switchChange" :checked="switchBz" />
-					</view>
+
+				<view class="margin-top-xl response reset-btn flex justify-center">
+					<view @click="showList" v-if="isShowListBtn" class="margin-right">查看列表</view>
+					<view @click="viewResult">查看结果</view>
 				</view>
 			</view>
-			<view class="margin-top-xl">
-				<button @click="viewResult">查看</button>
-			</view>
-		</view>
-		<view v-else class="text-white view-info">
-			<view class="response">
-				<view class="result-info-item text-xxl text-bold">{{nickname}}</view>
-				<view class="battery">
-					<view class="battery-left">
-						<view class="capacity-wrap">
-							<view class="capacity" :style="{width: progress+'%','background-color': progresColor}">
+			<view v-else class="text-white view-info">
+				<view class="response">
+					<view class="result-info-item text-xxl text-bold">{{birthdayData.nickname}}</view>
+					<view class="battery">
+						<view class="battery-left">
+							<view class="capacity-wrap">
+								<view class="capacity"
+									:style="{width: birthdayData.progress+'%','background-color': birthdayData.progresColor}">
+								</view>
+							</view>
+						</view>
+						<view class="battery-right"></view>
+					</view>
+					<view class="result-info-item text-xxl text-bold" :style="{'color': birthdayData.progresColor}">
+						{{birthdayData.progress}}%
+					</view>
+					<view class="result-info-item text-xs">{{birthdayData.yl}}</view>
+					<view class="result-info-item text-xs">{{birthdayData.nl}}</view>
+					<view class="result-info-item text-xs" v-if="switchBz">{{birthdayData.bz}}</view>
+					<view class="result-info-item text-xs" v-if="switchBz">{{birthdayData.wx}}</view>
+					<view class="result-info-item text-xl text-bold" :style="{'color': birthdayData.progresColor}">您已经
+						{{birthdayData.ages}} 岁了
+					</view>
+					<view class="result-info-item text-xl text-bold" :style="{'color': birthdayData.progresColor}">
+						{{birthdayData.years}}岁
+						{{birthdayData.cMonths}}个月 零{{birthdayData.cDays}}天
+					</view>
+					<view class="result-info-item">您已经在这个世界上已经存在了</view>
+					<view class="margin-top-lg">
+						<view class="info">
+							<view class="info-item">
+								<view>年</view>
+								<view class="text-bold text-xl">{{birthdayData.years}}</view>
+							</view>
+							<view class="info-item">
+								<view>月</view>
+								<view class="text-bold text-xl">{{birthdayData.months}}</view>
+							</view>
+							<view class="info-item">
+								<view>周</view>
+								<view class="text-bold text-xl">{{birthdayData.weeks}}</view>
+							</view>
+						</view>
+						<view class="info">
+							<view class="info-item">
+								<view>日</view>
+								<view class="text-bold text-xl">{{birthdayData.days}}</view>
+							</view>
+							<view class="info-item">
+								<view>时</view>
+								<view class="text-bold text-xl">{{birthdayData.hours}}</view>
+							</view>
+							<view class="info-item">
+								<view>分</view>
+								<view class="text-bold text-xl">{{birthdayData.minutes}}</view>
 							</view>
 						</view>
 					</view>
-					<view class="battery-right"></view>
 				</view>
-				<view class="result-info-item text-xxl text-bold" :style="{'color': progresColor}">{{progress}}%</view>
-				<view class="result-info-item text-xs">{{birthdatInfo.yl}}</view>
-				<view class="result-info-item text-xs">{{birthdatInfo.nl}}</view>
-				<view class="result-info-item text-xs" v-if="switchBz">{{birthdatInfo.bz}}</view>
-				<view class="result-info-item text-xs" v-if="switchBz">{{birthdatInfo.wx}}</view>
-				<view class="result-info-item text-xl text-bold" :style="{'color': progresColor}">您已经 {{ages}} 岁了</view>
-				<view class="result-info-item text-xl text-bold" :style="{'color': progresColor}">{{years}}岁
-					{{cMonths}}个月 零{{cDays}}天
+				<view class="margin-top-xl response reset-btn flex justify-center">
+					<view @click="showList" v-if="isShowListBtn"  class="margin-right">查看列表</view>
+					<view @click="showIpt">添加数据</view>
 				</view>
-				<view class="result-info-item">您已经在这个世界上已经存在了</view>
-				<view class="margin-top-lg">
-					<view class="info">
-						<view class="info-item">
-							<view>年</view>
-							<view class="text-bold text-xl">{{years}}</view>
-						</view>
-						<view class="info-item">
-							<view>月</view>
-							<view class="text-bold text-xl">{{months}}</view>
-						</view>
-						<view class="info-item">
-							<view>周</view>
-							<view class="text-bold text-xl">{{weeks}}</view>
-						</view>
-					</view>
-					<view class="info">
-						<view class="info-item">
-							<view>日</view>
-							<view class="text-bold text-xl">{{days}}</view>
-						</view>
-						<view class="info-item">
-							<view>时</view>
-							<view class="text-bold text-xl">{{hours}}</view>
-						</view>
-						<view class="info-item">
-							<view>分</view>
-							<view class="text-bold text-xl">{{minutes}}</view>
-						</view>
-					</view>
-				</view>
-			</view>
-			<view class="margin-top-xl response reset-btn">
-				<view @click="viewResult">重新输入</view>
 			</view>
 		</view>
+
+		<view class="wrap list-wrap" v-else>
+			<age-item v-for="(item,index) in listData" :data="item" @itemClick="itemClickFn" :showDeleteBtn="showDeleteBtn"
+				@resetList="resetListFn" />
+			<view class="margin-top-xl response reset-btn padding-bottom-lg flex justify-center">
+				<view @click="showIpt" class="margin-right">添加数据</view>
+				<view @click="deleteData" v-if="!showDeleteBtn">删除数据</view>
+				<view @click="deleteData" v-else>操作完成</view>
+			</view>
+		</view>
+
 		<quick-calendar :show='isShow' :date="date" @confirmDialog="selBirthday" @closeDialog="showCalendar">
 		</quick-calendar>
 	</view>
@@ -111,6 +133,8 @@
 <script>
 	import quickCalendar from "@/components/quick-calendar/calendar.vue";
 	import moment from 'moment'
+	import ageItem from "./ageItem.vue"
+
 
 	export default {
 		data() {
@@ -305,13 +329,86 @@
 				cDays: 0,
 				progress: 0,
 				progresColor: "green",
-				switchBz: false
+				switchBz: false,
+				// 是否有缓存数据，有显示列表，无缓存显示添加数据页面
+				isShowList: false,
+				listData: [],
+				birthdayData: {},
+				showDeleteBtn: false, // 删除按钮
+				isShowListBtn: true
 			};
 		},
 		components: {
 			quickCalendar,
+			ageItem
 		},
 		methods: {
+			onLoad() {
+				this.getStore1()
+			},
+			// 获取缓存
+			getStore1() {
+				// 查看有没有缓存
+				let store = [];
+				let self = this
+				uni.getStorage({
+					key: 'AGE_DATA',
+					success: function(res) {
+						store = JSON.parse(res.data)
+						if (store.length > 0) {
+							self.isShowList = false
+							self.isShowListBtn = true
+							// 有缓存
+							self.getStore2(store)
+						} else {
+							self.isShowList = true
+							self.isShowListBtn = false
+						}
+					},
+					fail() {
+						self.isShowList = true
+						self.isShowListBtn = false
+					}
+				})
+			},
+			getStore2(data) {
+				let listData = []
+				data.forEach(item => {
+					listData.push(this.jsResult({
+						...item
+					}))
+				})
+				this.listData = listData
+			},
+
+			// 刷新页面
+			resetListFn() {
+				this.getStore1()
+			},
+
+			// 显示删除数据按钮
+			deleteData() {
+				this.showDeleteBtn = !this.showDeleteBtn
+			},
+			
+			// 点击一条数据查看详情
+			itemClickFn(data) {
+				this.birthdayData = data;
+				// 显示详情， 隐藏列表
+				this.isShowResult = false
+				this.isShowList = true
+			},
+
+			// 新建一个人
+			showIpt() {
+				this.isShowResult = true
+				this.isShowList = true
+			},
+			// 显示列表
+			showList() {
+				this.getStore1()
+				this.isShowList = false
+			},
 			// 显示日期选择框
 			showCalendar() {
 				this.isShow = !this.isShow;
@@ -329,7 +426,7 @@
 			// 选择寿命
 			lifeChange(data) {
 				this.lifeValue = data.detail.value;
-			}, 
+			},
 			// 选择寿命
 			timeChange(data) {
 				this.timeValue = data.detail.value;
@@ -342,6 +439,8 @@
 			viewResult() {
 				const start = moment(this.date);
 				const end = moment();
+				// 显示查看列表按钮
+				this.isShowListBtn = true;
 				// 判断输入数据是否正常
 				if (!this.nickname) {
 					uni.showToast({
@@ -357,41 +456,100 @@
 						duration: 1000
 					});
 				} else {
-					let birthday = this.date.split("/")
 
-					this.years = end.diff(start, 'years')
-					this.months = end.diff(start, 'months')
-					this.days = end.diff(start, 'days')
-					this.weeks = end.diff(start, 'weeks')
-					this.hours = end.diff(start, 'hours')
-					this.minutes = end.diff(start, 'minutes')
-
-					let duration = moment.duration(this.minutes, 'minutes');
-					this.ages = duration.asYears().toFixed(2) // 年龄
-					this.cMonths = duration.months() // 几个月
-					this.cDays = duration.days() // 几天
-
-					// 预期年龄
-					let total = moment.duration(this.lifeRange[this.lifeValue].replace('岁', ''), 'years');
-					// 当前年龄占比
-					this.progress = ((end.diff(start, 'seconds') / total.asSeconds()) * 100).toFixed(2)
-
-					if (this.progress > 60 && this.progress < 90) {
-						this.progresColor = 'orange'
-					} else if (this.progress > 90) {
-						this.progresColor = 'red'
-					} else {
-						this.progresColor = 'green'
+					let obj = {
+						id: moment().unix(),
+						paramBirthday: this.date,
+						paramNickname: this.nickname,
+						paramTime: this.timeValue == 12 ? 0 : this.timeValue * 2,
+						paramExpect: this.lifeRange[this.lifeValue].replace('岁', '')
 					}
 
+					let ageDataArr = []
+					uni.getStorage({
+						key: 'AGE_DATA',
+						success: function(res) {
+							ageDataArr = JSON.parse(res.data)
+							ageDataArr.push(obj)
+							// 设置缓存
+							uni.setStorage({
+								key: 'AGE_DATA',
+								data: JSON.stringify(ageDataArr),
+								success: function() {}
+							});
+						},
+						fail: function() {
+							ageDataArr.push(obj)
+							uni.setStorage({
+								key: 'AGE_DATA',
+								data: JSON.stringify(ageDataArr),
+								success: function() {}
+							});
+						}
+					});
 
 
-					// 解析生日
-					this.birthdatInfo = this.explainBirthday(birthday[0], birthday[1], birthday[2], this.timeValue ==
-						12 ? 0 : this.timeValue * 2)
+					this.birthdayData = this.jsResult({
+						...obj
+					})
+
 					// 显示结果页面
 					this.isShowResult = !this.isShowResult;
 				}
+			},
+			jsResult(param) {
+				const start = moment(param.paramBirthday);
+				const end = moment();
+				let birthday = param.paramBirthday.split("/")
+
+				this.years = end.diff(start, 'years')
+				this.months = end.diff(start, 'months')
+				this.days = end.diff(start, 'days')
+				this.weeks = end.diff(start, 'weeks')
+				this.hours = end.diff(start, 'hours')
+				this.minutes = end.diff(start, 'minutes')
+
+				let duration = moment.duration(this.minutes, 'minutes');
+				this.ages = duration.asYears().toFixed(2) // 年龄
+				this.cMonths = duration.months() // 几个月
+				this.cDays = duration.days() // 几天
+
+				// 预期年龄
+				let total = moment.duration(this.lifeRange[this.lifeValue].replace('岁', ''), 'years');
+				// 当前年龄占比
+				let progress = ((end.diff(start, 'seconds') / total.asSeconds()) * 100).toFixed(2)
+				let progresColor = ''
+				if (progress > 60 && progress < 90) {
+					progresColor = 'orange'
+				} else if (progress > 90) {
+					progresColor = 'red'
+				} else {
+					progresColor = 'green'
+				}
+
+
+
+				// 解析生日
+				let birthdatInfo = this.explainBirthday(birthday[0], birthday[1], birthday[2], this.timeValue ==
+					12 ? 0 : this.timeValue * 2)
+
+				let ageInfo = {
+					id: param.id,
+					years: end.diff(start, 'years'),
+					months: end.diff(start, 'months'),
+					days: end.diff(start, 'days'),
+					weeks: end.diff(start, 'weeks'),
+					hours: end.diff(start, 'hours'),
+					minutes: end.diff(start, 'minutes'),
+					nickname: param.paramNickname,
+					...birthdatInfo,
+					ages: duration.asYears().toFixed(2), // 年龄
+					cMonths: duration.months(), // 年龄月份
+					cDays: duration.days(), // 年龄天  18岁 8个月 18天
+					progress: progress,
+					progresColor: progresColor,
+				}
+				return ageInfo
 			},
 			// 解析生日
 			explainBirthday(nian, yue, ri, hh) {
@@ -675,5 +833,10 @@
 		text-align: center;
 		color: gray;
 		text-decoration: underline;
+	}
+
+	/* 列表 */
+	.list-wrap {
+		padding-bottom: 20px;
 	}
 </style>

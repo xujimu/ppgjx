@@ -14,7 +14,6 @@
         "uview": "^0.1.0",
         "exif-js": "^2.3.0",
         "moment": "^2.29.1",
-        "moment-range": "^4.0.2",
         "uview-ui": "^1.8.4"
     }
 }
