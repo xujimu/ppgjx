@@ -1,5 +1,5 @@
 <!-- 
-	2021/8/21
+	2021/8/24
 	YuanZhuang
 	755966092@qq.com 
 -->
@@ -65,9 +65,9 @@
 				<view class="result-info-item text-xs" v-if="switchBz">{{birthdatInfo.wx}}</view>
 				<view class="result-info-item text-xl text-bold" :style="{'color': progresColor}">您已经 {{ages}} 岁了</view>
 				<view class="result-info-item text-xl text-bold" :style="{'color': progresColor}">{{years}}岁
-					{{cMonths}}个月 {{cDays}}天
+					{{cMonths}}个月 零{{cDays}}天
 				</view>
-				<view class="result-info-item">您已经在这个世界上存在了</view>
+				<view class="result-info-item">您已经在这个世界上已经存在了</view>
 				<view class="margin-top-lg">
 					<view class="info">
 						<view class="info-item">
@@ -103,18 +103,15 @@
 				<view @click="viewResult">重新输入</view>
 			</view>
 		</view>
-		<quick-calendar :show='isShow' :date="date" @confirmDialog="selBirthday" @closeDialog="showCalendar"></quick-calendar>
+		<quick-calendar :show='isShow' :date="date" @confirmDialog="selBirthday" @closeDialog="showCalendar">
+		</quick-calendar>
 	</view>
 </template>
 
 <script>
 	import quickCalendar from "@/components/quick-calendar/calendar.vue";
-	import Moment from 'moment'
-	import {
-		extendMoment
-	} from 'moment-range';
+	import moment from 'moment'
 
-	const moment = extendMoment(Moment);
 	export default {
 		data() {
 			// 默认显示当前日期
@@ -322,7 +319,8 @@
 			// 选择生日
 			selBirthday(data) {
 				this.showCalendar();
-				this.date = data.date;
+				this.date =
+					data.date;
 			},
 			// 显示/隐藏生辰八字
 			switchChange(data) {
@@ -359,21 +357,25 @@
 						duration: 1000
 					});
 				} else {
-					this.isShowResult = !this.isShowResult;
-					// 开始时间小于结束时间
-					const range = moment.range(start, end);
-					// 已经存在的 年 月 日 周 小时 分
-					this.years = range.diff('years')
-					this.months = range.diff('months')
-					this.days = range.diff('days')
-					this.weeks = range.diff('weeks')
-					this.hours = range.diff('hours')
-					this.minutes = range.diff('minutes')
+					let birthday = this.date.split("/")
+
+					this.years = end.diff(start, 'years')
+					this.months = end.diff(start, 'months')
+					this.days = end.diff(start, 'days')
+					this.weeks = end.diff(start, 'weeks')
+					this.hours = end.diff(start, 'hours')
+					this.minutes = end.diff(start, 'minutes')
+
+					let duration = moment.duration(this.minutes, 'minutes');
+					this.ages = duration.asYears().toFixed(2) // 年龄
+					this.cMonths = duration.months() // 几个月
+					this.cDays = duration.days() // 几天
 
 					// 预期年龄
 					let total = moment.duration(this.lifeRange[this.lifeValue].replace('岁', ''), 'years');
 					// 当前年龄占比
-					this.progress = ((range.diff('seconds') / total.asSeconds()) * 100).toFixed(2)
+					this.progress = ((end.diff(start, 'seconds') / total.asSeconds()) * 100).toFixed(2)
+
 					if (this.progress > 60 && this.progress < 90) {
 						this.progresColor = 'orange'
 					} else if (this.progress > 90) {
@@ -381,28 +383,14 @@
 					} else {
 						this.progresColor = 'green'
 					}
-					// 今年一月一号到今天多少天
-					let yearStart;
-					if (start.year() === end.year()) {
-						// 如果选择的是今年
-						yearStart = start
-					} else {
-						yearStart = moment().year() + "/01/01"
-					}
 
-					const currentRange = moment.range(yearStart, end);
-					// 平年还是闰年,今年多少天
-					const yearDays = moment().isLeapYear() ? 366 : 355
 
-					const ages = range.diff('years') + currentRange.diff('days') / yearDays
-					this.ages = ages.toFixed(2)
-					this.cMonths = currentRange.diff('months')
-					this.cDays = currentRange.diff('days')
 
 					// 解析生日
-					let birthday = this.date.split("/")
 					this.birthdatInfo = this.explainBirthday(birthday[0], birthday[1], birthday[2], this.timeValue ==
 						12 ? 0 : this.timeValue * 2)
+					// 显示结果页面
+					this.isShowResult = !this.isShowResult;
 				}
 			},
 			// 解析生日
