@@ -37,7 +37,7 @@
 			//判断单功能模式是否开启
 			const onFun = uni.getStorageSync('oneFun');
 			if(onFun.status){
-				_self.navto(_self.$store.state.funlist[onFun.index].name)
+				_self.navto(onFun.path)
 			}
 			//创建临时目录
 			plus.io.resolveLocalFileSystemURL('_doc', function( ent ) {

@@ -52,12 +52,13 @@
 		},
 		data() {
 			return {
-				oneFun: {'status': false,'index':0}
+				oneFun: {'status': false,'index':0 ,'path': ''}
 			} 
 		},
 		methods: {
 			change(e){
 				_self.oneFun.index = e.detail.value
+				_self.oneFun.path =  _self.$store.state.funlist[_self.oneFun.index].name
 				console.log(_self.oneFun.index)
 			},
 		}

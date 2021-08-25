@@ -609,6 +609,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/index/setting/ad",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "广告设置",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
     "globalStyle": {
         "navigationBarTextStyle": "white",

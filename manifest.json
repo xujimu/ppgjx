@@ -112,7 +112,8 @@
                         "secretkey" : "MIBY8YiypcCNzoFDn6iLEI4FdVbjvZhm"
                     }
                 },
-                "maps" : {}
+                "maps" : {},
+                "payment" : {}
             },
             "icons" : {
                 "android" : {

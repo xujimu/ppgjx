@@ -11,6 +11,7 @@
 				</uni-col>
 				<uni-col :span="8">
 					<view class="trophy">
+						
 					</view>
 				</uni-col>
 			</uni-row>
