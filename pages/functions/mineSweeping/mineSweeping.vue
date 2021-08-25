@@ -6,19 +6,17 @@
 <template>
 	<view class="game-page">
 		<div class="mine-temp">
+			<view class="title">{{levelList[level].name}}</view>
 			<view class="utils-bar">
 				<view class="utils-item">
 					<u-icon name="clock"/>
-					<!-- <text class="iconfont icontime"></text> -->
 					<text class="value">{{ time }}</text>
 				</view>
 				<view class="utils-item">
 					<u-icon name="star-fill"/>
-					<!-- <text class="iconfont iconqizhi"></text> -->
 					<text class="value">{{ flagCount }}</text>
 				</view>
 				<view class="utils-item">
-					<!-- <text class="iconfont icondilei"></text> -->
 					<u-icon name="heart-fill"/>
 					<text class="value">{{ levelList[level].count }}</text>
 				</view>
@@ -31,10 +29,8 @@
 					@contextmenu.prevent="toggleFlag(row)">
 					<template v-if="row.status === 1">
 						<text v-if="!row.isMine && row.count" :style="{color: numberColors[row.count - 1]}">{{ row.count }}</text>
-						<!-- <i  class="iconfont icondilei" v-if="row.isMine"></i>	 -->
 						<u-icon name="heart-fill" v-if="row.isMine"/>
 					</template>
-					<!-- <i class="iconfont iconqizhi" v-show="row.status === 2"></i> -->
 					<u-icon name="star-fill" v-if="row.status === 2"  color="var(--warning)"/>
 				</view>
 			</view>    
@@ -308,6 +304,7 @@
 		position: relative;
 		border: 1px solid #171717;
 		opacity: .95;
+		color: red;
 		.iconqizhi{
 			color: red;
 		}

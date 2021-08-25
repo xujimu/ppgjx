@@ -30,62 +30,96 @@
 				selectDate: '',
 				remark: '',
 				allData: [],
-				today:'',
-				isInit:false,
-				isShow:true
+				today: '',
+				isInit: false,
+				isShow: true
 			};
 		},
 		computed: {
 			defaultSelectDate() {
-				if(this.isInit){
+				if (this.isInit) {
 					return;
-				}else{
+				} else {
 					return this.getDate();
 				}
 			},
 		},
 		onLoad() {
-			this.isShow=false;
+			this.isShow = false;
 			this.selectData();
 		},
 		methods: {
 			changeDate(data) {
 				var that = this;
-				that.isShow=true;
+				that.isShow = true;
 				this.selectDate = data.date;
 				var allData = that.allData;
 				for (let index in that.allData) {
 					var item = allData[index];
 					if (item.date == data.date) {
 						that.remark = item.remark;
-						that.isShow=true;
+						that.isShow = true;
 						break;
-					}else{
+					} else {
 						that.remark = '';
 					}
 				}
 				if (data.tag) {
-					return;
-				}
-				if(data.date>that.today){
-					that.isShow=false;
-					return;
-				}
-				uni.showActionSheet({
-					itemList: ['姨妈来了', '姨妈走了'],
-					success: function(res) {
-						var index = res.tapIndex;
-						data.tag = index == 0 ? '姨妈来了' : '姨妈走了';
-						data.remark = '';
-						that.createData(data);
-					},
-					fail: function(res) {
-						console.log(res.errMsg);
+					uni.showActionSheet({
+						itemList: ['姨妈来了', '姨妈走了', '删除记录'],
+						success: function(res) {
+							var index = res.tapIndex;
+							data.tag = index == 0 ? '姨妈来了' : '姨妈走了';
+							if (index == 2) {
+								data.tag = ''
+							}
+							that.createData(data);
+						},
+						fail: function(res) {
+							console.log(res.errMsg);
+						}
+					});
+				}else{
+					console.log(1)
+					if (data.date > that.today) {
+						that.isShow = false;
+						console.log(that.today)
+						return;
 					}
-				});
+					uni.showActionSheet({
+						itemList: ['姨妈来了', '姨妈走了'],
+						success: function(res) {
+							var index = res.tapIndex;
+							data.tag = index == 0 ? '姨妈来了' : '姨妈走了';
+							data.remark = '';
+							that.createData(data);
+						},
+						fail: function(res) {
+							console.log(res.errMsg);
+						}
+					});
+				}
+				
 			},
 			createData(data) {
 				var _self = this;
+				if (data.tag == '') {
+					plus.sqlite.selectSql({
+						name: 'ppgjx',
+						sql: "delete from womanRecord " + "where date='" + data.date +
+							"';",
+						success: function(data) {
+							that.selectData();
+							uni.showToast({
+								title: '删除成功',
+								duration: 2000
+							});
+						},
+						fail: function(e) {
+							console.log('selectSql failed: ' + JSON.stringify(e));
+						}
+					});
+				}
 				var guid = _self.$u.guid()
 				plus.sqlite.executeSql({
 					name: 'ppgjx',
@@ -156,8 +190,8 @@
 					date: this.selectDate,
 					tag: '-1'
 				};
-				this.changeDate(data);
-				this.isInit=true;	
+				// this.changeDate(data);
+				this.isInit = true;
 				return `${year}-${month}-${day}`;
 			}
 		}
