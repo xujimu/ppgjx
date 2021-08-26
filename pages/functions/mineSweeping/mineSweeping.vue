@@ -308,6 +308,7 @@
 		position: relative;
 		border: 1px solid #171717;
 		opacity: .95;
+		color: red;
 		.iconqizhi{
 			color: red;
 		}
