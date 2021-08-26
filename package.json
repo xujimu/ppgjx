@@ -11,9 +11,9 @@
     "license": "ISC",
     "dependencies": {
         "@antv/g2": "^4.0.15",
-        "uview": "^0.1.0",
         "exif-js": "^2.3.0",
         "moment": "^2.29.1",
+        "uview": "^0.1.0",
         "uview-ui": "^1.8.4"
     }
 }
