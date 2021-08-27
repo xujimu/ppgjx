@@ -103,6 +103,17 @@
 		</view>
 		<uni-popup ref="popup" type="bottom">
 			<view class="c-box">
+				<uni-row style="margin-left: 0 !important;">
+					<uni-col :span="8">
+						<view>排名</view>
+					</uni-col>
+					<uni-col :span="8">
+						<view>昵称</view>
+					</uni-col>
+					<uni-col :span="8">
+						<view>奖励</view>
+					</uni-col>
+				</uni-row>
 				<view v-for="(item,index) in prizeData" :key="index" :class="index%2==0?'row-bg':''">
 					<uni-row style="margin-left: 0 !important;">
 						<uni-col :span="8">
@@ -117,7 +128,7 @@
 						</uni-col>
 					</uni-row>
 				</view>
-				<view class="tip">注：作弊手段不发放奖励</view>
+				<view class="tip">{{rule}}</view>
 			</view>
 		</uni-popup>
 	</view>
@@ -129,31 +140,32 @@
 		data() {
 			return {
 				data: [],
+				rule: '本活动与apple inc无关',
 				myNum: '未登录', //此处替换为后台获取
 				prizeData: [{ //前三奖品
-						name: "p1",
-						prize: '皮皮虾T恤'
+						name: "未知",
+						prize: '未知'
 					},
 					{
-						name: "p2",
-						prize: '20元现金'
+						name: "未知",
+						prize: '未知元现金'
 					},
 					{
-						name: "p3",
-						prize: '10元现金'
+						name: "未知",
+						prize: '10未知'
 					}
 				],
 				topData:[//本周/上周前三用户
 					{
-						name: "p2",
+						name: "未知",
 						pic: '../../static/images/pictureProduction/zbtx.jpg'
 					},
 					{
-						name: "p2",
+						name: "未知",
 						pic: '../../static/images/pictureProduction/zbtx.jpg'
 					},
 					{
-						name: "p2",
+						name: "未知",
 						pic: '../../static/images/pictureProduction/zbtx.jpg'
 					}
 				],
@@ -180,6 +192,7 @@
 			},
 			change(){
 				_self.changeFlag==1?_self.changeFlag=0:_self.changeFlag=1;
+				_self.getList(true)
 				//切换本周和上周前三数据
 			},
 			getClass(index) {
@@ -203,7 +216,6 @@
 				if (num) {
 					sum = 0
 				}
-				return;
 				uni.showLoading({
 					title: '加载中'
 				});
@@ -211,7 +223,8 @@
 					url: "/user/ad/ranking", //仅为示例，并非真实接口地址。
 					method: "POST",
 					data: {
-						offset: sum
+						offset: sum,
+						type: _self.changeFlag
 					},
 					header: {
 						'Content-Type': 'application/x-www-form-urlencoded'
@@ -219,12 +232,16 @@
 				}).then(res => {
 					console.log(res)
 					if (res.data.code == 0) {
+						
 						if (num) {
 							_self.data = res.data.data.list
+							_self.prizeData = res.data.data.prizeData
+							_self.topData = res.data.data.topData
 						} else {
 							_self.data = _self.data.concat(res.data.data.list)
 						}
 						_self.myNum = res.data.data.mySum;
+						_self.rule = res.data.data.rule;
 						// _self.shortUrl = res.data.data
 					}
 					uni.hideLoading();
@@ -378,7 +395,7 @@
 	.c-box {
 		background-color: #FFFFFF;
 		width: 90vw;
-		height: 400rpx;
+		height: 700rpx;
 		border-radius: 40rpx;
 	}
 
