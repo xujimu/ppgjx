@@ -7,7 +7,8 @@
 <script>
 	export default {
 		onLoad() {
-			this.navto('/pages/functions/help/help?url=https://ppgjx.com/xbw&title=小霸王游戏')
+			plus.runtime.openURL('https://ppgjx.com/functions/index/xbw');  
+			uni.navigateBack(1)
 		},
 		data() {
 			return {

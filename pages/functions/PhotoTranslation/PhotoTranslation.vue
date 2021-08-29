@@ -5,20 +5,53 @@
 -->
 <template>
 	<view>
-		<view class="cu-bar bg-white">
+		<view class="cu-form-group ">
+			<view class="title">源语言</view>
+			<picker @change="fromF" :value="fromIndex" :range="from" range-key="name">
+				<view class="picker">
+					{{from[fromIndex].name}}
+				</view> 
+			</picker>
+		</view>
+		
+		<view class="cu-form-group ">
+			<view class="title">目标语言</view>
+			<picker @change="toF" :value="toIndex" :range="to" range-key="name">
+				<view class="picker">
+					{{to[toIndex].name}}
+				</view> 
+			</picker>
+		</view>
+		
+		<view v-if="fromText" class="cu-bar bg-white">
 			<view class="action" style="text-align: center;" >
-				<view>
-					识别结果
+				<view style="color: #ED1C24;">
+					原始文本
 				</view>
 			</view>
 			<view class="action">
-				<button v-if="textres" class="cu-btn bg-green shadow" @click="copy()" data-target="Modal">复制</button>
+				<button v-if="fromText" class="cu-btn bg-green shadow" @click="copy(true)" data-target="Modal">复制</button>
+			</view>
+		</view>
+		
+		<view v-if="fromText" class="cu-form-group">
+			<textarea auto-height  maxlength="-1"  v-model="fromText" ></textarea>
+		</view>
+		
+		<view v-if="toText" class="cu-bar bg-white">
+			<view class="action" style="text-align: center;" >
+				<view style="color: #ED1C24;">
+					翻译文本
+				</view>
+			</view>
+			<view class="action">
+				<button v-if="toText" class="cu-btn bg-green shadow" @click="copy(false)" data-target="Modal">复制</button>
 			</view>
 		</view>
 	
 		
 		<view class="cu-form-group">
-			<textarea auto-height  maxlength="-1"  v-model="textres" placeholder="温馨提示:裁剪时选择文字区域识别更准确哦!"></textarea>
+			<textarea auto-height  maxlength="-1"  v-model="toText" placeholder="温馨提示:裁剪时选择文字区域识别更准确哦!"></textarea>
 		</view>
 		
 		<view class="padding flex flex-direction bg-white top">
@@ -60,14 +93,77 @@
 				 textres:'',
 				 tempFilePath: '',
 				 cropFilePath: '',
+				 fromIndex: 0,
+				 toText:'',
+				 fromText: '',
+				 from: [
+					 {'name': '自动','value':'auto'},
+					 {'name': '英语','value':'en'},
+					 {'name': '中文','value':'zh'},
+					 {'name': '日语','value':'jp'},
+					 {'name': '韩语','value':'kor'},
+					 {'name': '葡萄牙语','value':'pt'},
+					 {'name': '法语','value':'fra'},
+					 {'name': '德语','value':'de'},
+					 {'name': '意大利语','value':'it'},
+					 {'name': '西班牙','value':'spa'},
+					 {'name': '俄语','value':'ru'},
+					 {'name': '荷兰语','value':'nl'},
+					 {'name': '马来语','value':'may'},
+					 {'name': '丹麦语','value':'dan'},
+					 {'name': '瑞典语','value':'swe'},
+					 {'name': '印尼语','value':'id'},
+					 {'name': '波兰语','value':'pl'},
+					 {'name': '罗马尼亚语','value':'rom'},
+					 {'name': '土耳其语','value':'tr'},
+					 {'name': '希腊语','value':'el'},
+					 {'name': '匈牙利语','value':'hu'}
+				 ],
+				 toIndex: 0,
+				 to:[
+					 {'name': '英语','value':'en'},
+					 {'name': '中文','value':'zh'},
+					 {'name': '日语','value':'jp'},
+					 {'name': '韩语','value':'kor'},
+					 {'name': '葡萄牙语','value':'pt'},
+					 {'name': '法语','value':'fra'},
+					 {'name': '德语','value':'de'},
+					 {'name': '意大利语','value':'it'},
+					 {'name': '西班牙','value':'spa'},
+					 {'name': '俄语','value':'ru'},
+					 {'name': '荷兰语','value':'nl'},
+					 {'name': '马来语','value':'may'},
+					 {'name': '丹麦语','value':'dan'},
+					 {'name': '瑞典语','value':'swe'},
+					 {'name': '印尼语','value':'id'},
+					 {'name': '波兰语','value':'pl'},
+					 {'name': '罗马尼亚语','value':'rom'},
+					 {'name': '土耳其语','value':'tr'},
+					 {'name': '希腊语','value':'el'},
+					 {'name': '匈牙利语','value':'hu'}
+				 ],
 			}
 		},
 		methods: {
-			copy(){
+			copy(e){
+				var text 
+				if(e){
+					text = _self.fromText
+					
+				}else{
+					text = _self.toText
+				}
 				uni.setClipboardData({
-					data: _self.textres
+					data: text
 				});
 			},
+			fromF(e){
+				_self.fromIndex = e.detail.value
+			},
+			toF(e){
+				_self.toIndex = e.detail.value
+			},
+
 			upload() {
 			    uni.chooseImage({
 			        count: 1, //默认9
@@ -88,20 +184,28 @@
 				console.log(_self.domain) 
 				const tempFilePaths = _self.cropFilePath;
 				console.log("识别路径" + tempFilePaths)
-				_self.xhttp.upload('/functions/Ocr/textOcr',{
+				_self.xhttp.upload('/functions/PhotoTranslation/imgTran',{
 					filePath: tempFilePaths,
 					name: 'img', 
 					header:{
 						'content-type': 'multipart/form-data' 
 					},
+					formData: {
+						from: _self.from[_self.fromIndex].value,
+						to: _self.to[_self.toIndex].value
+					}
 				}).then(res => {
 					console.log(res)
 					if(res.data.code == 0){
-						_self.textres = res.data.data
-						if(_self.textres == ""){
-						  plus.nativeUI.alert("没有识别到文字", function(){
-							}, "提示", "好的"); 
-						} 	
+						
+					
+						_self.fromText = res.data.data.fromText 
+						_self.toText = res.data.data.toText 
+						uni.previewImage({
+							indicator: "none",
+							urls: [res.data.data.img],
+							current: 0
+						})
 					}
 					uni.hideLoading(); 
 				}).catch(err => {

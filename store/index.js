@@ -355,25 +355,25 @@ const store = new Vuex.Store({
 				describe: '皮友:山海经本精提供',
 				display: true,
 				platform: 0
-			}
-			// {
-			// 	title: '小霸王游戏',
-			// 	name: '/pages/functions/xbw/xbw',
-			// 	color: 'orange',
-			// 	cuIcon: 'time',
-			// 	describe: '官方',
-			// 	display: true,
-			// 	platform: 0
-			// }
-			// {
-			// 	title: '拍照翻译',
-			// 	name: '/pages/functions/PhotoTranslation/PhotoTranslation',
-			// 	color: 'orange',
-			// 	cuIcon: 'video',
-			// 	describe: '官方',
-			// 	display: true,
-			// 	platform: 0
-			// }
+			},
+			{
+				title: '小霸王游戏',
+				name: '/pages/functions/xbw/xbw',
+				color: 'orange',
+				cuIcon: 'game',
+				describe: '官方',
+				display: true,
+				platform: 0
+			},
+			{
+				title: '拍照翻译',
+				name: '/pages/functions/PhotoTranslation/PhotoTranslation',
+				color: 'orange',
+				cuIcon: 'attention',
+				describe: '官方',
+				display: true,
+				platform: 0
+			},
 			// ,
 			// {
 			// 	title: '测试',
@@ -391,7 +391,7 @@ const store = new Vuex.Store({
 		vibrateIndex: 0,
 		vibrateSpeed: 1,
 		platfrom: '',
-		version: '1.5.6'
+		version: '1.5.7'
 	},
 	mutations: {},
 	actions: {}
