@@ -75,7 +75,7 @@
 												if(e.index){
 													_self.data.push({"name":e.value,"placeholder":"请输入",value:"",type: 0})
 												}else{
-													_self.code("名称不能为空哦！",true)
+													_self.code("名称不能为空哦！")
 												}
 												
 											}
@@ -142,7 +142,7 @@
 										
 									}
 								}else{
-									_self.code("名称不能为空哦！",true)
+									_self.code("名称不能为空哦！")
 								}
 								
 							}
@@ -298,7 +298,7 @@
 				  //运行代码
 				
 				} catch(err) {
-					_self.code("计算错误,请检查公式是否正确或值是否填入",true)
+					_self.code("计算错误,请检查公式是否正确或值是否填入")
 				  //处理错误
 				
 				}

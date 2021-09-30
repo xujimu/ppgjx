@@ -17,6 +17,7 @@
 		</view>
 
 		<view v-if="playUrl">
+			
 			<video style="width: 100%;" id="myVideo" :src="playUrl" @error="videoErrorCallback" autoplay controls></video>
 		</view>
 

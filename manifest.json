@@ -39,10 +39,9 @@
         },
         /* 模块配置 */
         "modules" : {
-            "iBeacon" : {},
             "Push" : {},
-            "VideoPlayer" : {},
-            "SQLite" : {}
+            "SQLite" : {},
+            "iBeacon" : {}
         },
         /* 应用发布信息 */
         "distribute" : {
@@ -93,7 +92,12 @@
                     "NSMicrophoneUsageDescription" : "该应用需要您的相机，以便为您发送语音"
                 },
                 "idfa" : true,
-                "UIBackgroundModes" : "audio"
+                "UIBackgroundModes" : "audio",
+                "capabilities" : {
+                    "entitlements" : {
+                        "com.apple.developer.associated-domains" : [ "applinks:ucloud.ppgjx.com" ]
+                    }
+                }
             },
             /* SDK配置 */
             "sdkConfigs" : {
@@ -113,7 +117,14 @@
                     }
                 },
                 "maps" : {},
-                "payment" : {}
+                "payment" : {
+                    "weixin" : {
+                        "__platform__" : [ "ios", "android" ],
+                        "appid" : "wxfa3199c64096d90b",
+                        "UniversalLinks" : "https://ucloud.ppgjx.com/uni-universallinks/__UNI__71ADDDF"
+                    }
+                },
+                "share" : {}
             },
             "icons" : {
                 "android" : {
@@ -186,5 +197,6 @@
     },
     "uniStatistics" : {
         "enable" : false
-    }
+    },
+    "_spaceID" : "89859aec-6f94-4752-a5b4-19657bd4aaee"
 }

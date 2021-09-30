@@ -121,8 +121,8 @@
 				 ],
 				 toIndex: 0,
 				 to:[
-					 {'name': '英语','value':'en'},
 					 {'name': '中文','value':'zh'},
+					 {'name': '英文','value':'en'},
 					 {'name': '日语','value':'jp'},
 					 {'name': '韩语','value':'kor'},
 					 {'name': '葡萄牙语','value':'pt'},

@@ -40,7 +40,7 @@
 				case 'android':
 					console.log('运行Android上')
 					// Vue.prototype.requestAndroidPermission("android.permission.CAMERA","相机")
-					_self.code("安卓暂未统一推送,暂时无法使用该功能", true)
+					_self.code("安卓暂未统一推送,暂时无法使用该功能")
 					break;
 				case 'ios':
 					Vue.prototype.requestIosPermission("push", "通知")

@@ -66,21 +66,20 @@
 				});
 
 				_self.xhttp.request({
-					url: "/user/user/v1/login", //仅为示例，并非真实接口地址。
+					url: "/user/login", //仅为示例，并非真实接口地址。
 					method:"POST",
 					data: {
 						account:_self.account,
-						password:_self.password,
-						platform:_self.$store.state.platform,
-						pushStatus: pushStatus
+						password:_self.password
 					},
 					header:{
-						'Content-Type':'application/x-www-form-urlencoded'
+						'Content-Type':'application/json'
 					}
 				}).then(res => {
-					if(res.data.code == 0){
-						uni.setStorageSync('user', res.data.data);
-						_self.$store.state.user = res.data.data 
+					if(res.data.code == 200){
+						uni.setStorageSync('user', res.data.data.userInfo);
+						_self.$store.state.user = res.data.data.userInfo
+						_self.$store.state.user.token = res.data.data.token
 						uni.switchTab({
 						    url: '/pages/index/my'
 						});	

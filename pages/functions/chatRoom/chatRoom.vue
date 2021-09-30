@@ -901,14 +901,14 @@
 						break;
 					case 2:
 						console.log(data)
-						plus.nativeUI.alert(data.message, function() {}, "提示", "好的");
+						plus.nativeUI.alert(data.msg, function() {}, "提示", "好的");
 						uni.navigateBack({
 							delta: 1
 						});
 						break;
 					case 3:
 						console.log(data)
-						plus.nativeUI.alert(data.message, function() {}, "提示", "好的");
+						plus.nativeUI.alert(data.msg, function() {}, "提示", "好的");
 						break;
 
 				}

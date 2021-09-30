@@ -148,13 +148,13 @@
 								_self.clear()
 								_self.buttonName = '测速'
 								console.log("网络错误");
-								_self.code("网络错误,请检查网络是否开启",true)	
+								_self.code("网络错误,请检查网络是否开启")	
 							}
 						},fail:(err) =>{
 							console.log(err)
 							if(err.errMsg != "downloadFile:fail abort"){
 								if(!_self.unload){
-									_self.code("网络错误,请检查网络是否开启",true)
+									_self.code("网络错误,请检查网络是否开启")
 								}
 							}
 							_self.clear()

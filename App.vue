@@ -145,7 +145,7 @@
 				 		break;
 				 }
 			}); 
-			 
+			  
 			
 			//发送请求拦截前
 			_self.xhttp.interceptors.request.use((config) => { // 可使用async await 做异步操作
@@ -153,13 +153,13 @@
 			  config.header = {
 			      ...config.header,
 			     token: _self.$store.state.user ?  _self.$store.state.user.token : undefined ,
-				 uid: _self.$store.state.user ? _self.$store.state.user.user_id : undefined ,
+				 uid: _self.$store.state.user ? _self.$store.state.user.userId : undefined ,
 				 platform: _self.$store.state.platform ,
 				 version: _self.$store.state.version ,
 				 //这里返回值不是真正的null而是字符串null有点坑
 				 cid: cid,
-				 access: ''//服务器加密秘钥协作开发者无需修改
-			  }
+				 access: ""//服务器加密秘钥协作开发者无需修改
+			  } 
 			  console.log("发送请求拦截前",config)	
 			  return config
 			}, config => { // 可使用async await 做异步操作
@@ -172,34 +172,30 @@
 			_self.xhttp.interceptors.response.use((response) => { /* 对响应成功做点什么 可使用async await 做异步操作*/
 			  console.log("发送请求拦截后",response)
 			  
-			  if(response.data.code != 0){
-				  //清除登录信息
-				  if(response.data.code == 4){
+			  if(response.data.code != 200){
+				  //如果是请登录或者是账号在其他地方登录 则清除登录信息
+				  if(response.data.code == 10003 || response.data.code == 10002 || response.data.cod == 10004){
 					  _self.$store.state.user = null
 					  uni.setStorageSync('user', null);
-					  plus.nativeUI.alert(response.data.message, function(){
-						}, "提示", "好的");
+						 _self.toast(response.data.msg)
 						uni.switchTab({
 							url: '/pages/index/my'
 						});
 				  }else{
-					  plus.nativeUI.alert(response.data.message, function(){
-					  	}, "提示", "好的");
+					  _self.toast(response.data.msg)
 				  }
 				  
 			  } 
 			  return response
 			}, (response) => { /*  对响应错误做点什么 （statusCode !== 200）*/
 			  console.log("请求失败",response)
-			  plus.nativeUI.alert("操作失败!请检查网络", function(){
-			 	}, "提示", "好的");
-			  
+			   _self.toast("请求失败!无法与服务器通信")
 			  return Promise.reject(response)
 			})
 			
 			_self.xhttp.request({
-				url: "/functions/index/init", //仅为示例，并非真实接口地址。
-				method:"POST",
+				url: "/app/startSetting", //仅为示例，并非真实接口地址。
+				method:"GET",
 				data: {
 					
 				},
@@ -208,9 +204,9 @@
 				}
 			}).then(res => {
 				console.log("初始化",res) 
-				if(res.data.code == 0){ 
+				if(res.data.code == 200){ 
 					var funlist = _self.$store.state.funlist
-					var newFunlist = res.data.data
+					var newFunlist = res.data.data.appFuncList
 					for (var i = 0; i < newFunlist.length; i++) {
 						for (var j = 0; j < funlist.length; j++) {
 							if(newFunlist[i].title == funlist[j].title){
@@ -222,78 +218,72 @@
 							}
 						}
 					}
+					
+					//安卓应用内提示更新
+					
+					switch (_self.$store.state.platform) {
+						case 'android':	
+							if(_self.$store.state.version != res.data.data.androidVersion){
+								var url = res.data.data.url
+								uni.showModal({
+									title: '提示',  
+									content: "有新版本 是否更新?",
+									success: function(res) {
+										if (res.confirm) {
+											plus.runtime.openURL(url)
+										} else if (res.cancel) {
+											console.log('用户点击取消');
+										}
+									}
+								});
+							}
+							break;
+						case 'ios':
+							console.log('运行iOS上')
+							break;
+						default:
+							console.log('运行在开发者工具上')
+							break;
+					}
 				}
 			}).catch(err => {
 			})
 			
 		},
 		onShow: function() {
-			var pushStatus = 0
-			//安卓应用内提示更新
-			switch (_self.$store.state.platform) {
-				case 'android':	
-					uni.request({
-						url: _self.domain + "/index/index/update", //仅为示例，并非真实接口地址。
-						method: "POST",
-						data: {
-							version: _self.$store.state.version
-						}, 
-						header: {
-							'Content-Type': 'application/x-www-form-urlencoded'
-						},
-						success: (res) => {
-							console.log(res.data);
 			
-							if (res.data.code == 0) {
-								if (res.data.data != null) {
-									var url = res.data.data
-									uni.showModal({
-										title: '提示',  
-										content: res.data.message,
-										success: function(res) {
-											if (res.confirm) {
-												plus.runtime.openURL(url)
-											} else if (res.cancel) {
-												console.log('用户点击取消');
-											}
-										}
-									});
-								}
-							} else {
-								plus.nativeUI.alert(res.data.message, function() {}, "提示", "好的");
-							}
-						},
-						fail: (err) => {
-							console.log(err)
-						},
-						complete: () => {
-			
-						}
-					});
-					break;
-				case 'ios':
-					if(permision.judgeIosPermission("push") === 2){
-						pushStatus = 0
-					}else{
-						pushStatus = 1
-					}
-					console.log('运行iOS上')
-					break;
-				default:
-					console.log('运行在开发者工具上')
-					break;
-			}
 			//如果用户登录 则上报
 			if(_self.$store.state.user){
+				
+				var pushState = 0
+				//安卓应用内提示更新
+				switch (_self.$store.state.platform) {
+					case 'android':	
+						
+						break;
+					case 'ios':
+						if(permision.judgeIosPermission("push") === 2){
+							pushState = 0
+						}else{
+							pushState = 1
+						}
+						console.log('运行iOS上')
+						break;
+					default:
+						console.log('运行在开发者工具上')
+						break;
+				}
 				//上报状态
 				_self.xhttp.request({
-					url: "/user/user/v1/push", //仅为示例，并非真实接口地址。
+					url: "/user/push/updateState", //仅为示例，并非真实接口地址。
 					method:"POST",
 					data: {
-						pushStatus:pushStatus
+						pushState: pushState,
+						cid: plus.push.getClientInfo().clientid,
+						platform: _self.$store.state.platform
 					},
 					header:{
-						'Content-Type':'application/x-www-form-urlencoded'
+						'Content-Type':'application/json'
 					}
 				}).then(res => {
 					

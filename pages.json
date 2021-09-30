@@ -618,6 +618,24 @@
             }
             
         }
+        ,{
+            "path" : "pages/functions/VideoToGIF/VideoToGIF",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "视频转GIF",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/functions/test/ffmpegTest",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "ffmpegTest",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
     "globalStyle": {
         "navigationBarTextStyle": "white",

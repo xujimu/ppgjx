@@ -53,9 +53,9 @@
 				    success: function (res) {
 				        if (res.confirm) {
 							_self.xhttp.request({
-								url: "/user/user/v1/quit", //仅为示例，并非真实接口地址。
-								method:"POST",
-								data:{
+								url: "/user/quit", //仅为示例，并非真实接口地址。
+								method:"GET",
+								data:{ 
 									
 								},
 								header:{
@@ -63,7 +63,7 @@
 								}
 							}).then(res => {
 								console.log("返回状态")  
-								if(res.data.code == 0){	
+								if(res.data.code == 200){	
 									_self.$store.state.user = null
 									uni.setStorageSync('user', null);
 									uni.switchTab({

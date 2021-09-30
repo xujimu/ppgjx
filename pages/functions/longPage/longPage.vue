@@ -224,12 +224,12 @@
 										})
 									}else{
 										console.log("下载失败")
-										_self.code("截图失败!",true)
+										_self.code("截图失败!")
 									}
 								},
 								fail: () => {
 									console.log("下载失败")
-									_self.code("截图失败!请检查网络!",true)
+									_self.code("截图失败!请检查网络!")
 								},
 								complete: () => {
 									uni.hideLoading(); 

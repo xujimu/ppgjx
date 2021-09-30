@@ -52,21 +52,18 @@
 				console.log("注册")
 				
 				if(!_self.$u.test.enOrNum(_self.account)){
-					plus.nativeUI.alert("皮皮号只能是数字与字母组合哦!", function(){
-						}, "提示", "好的");
+					_self.toast("皮皮号只能是数字与字母组合哦!")
 				}else if(_self.password != _self.verifyPassword){
-					plus.nativeUI.alert("两次密码不一致!", function(){
-						}, "提示", "好的");
+					_self.toast("两次密码不一致!")
 				}else if(!_self.$u.test.enOrNum(_self.password)){
-					plus.nativeUI.alert("密码只能是数字与字母组合哦!", function(){
-						}, "提示", "好的");
+					_self.toast("密码只能是数字与字母组合哦!")
 				}else{
 					uni.showLoading({
 					    title: '注册中'
 					});
 					
 					_self.xhttp.request({
-						url: "/user/user/v1/register", //仅为示例，并非真实接口地址。
+						url: "/user/register", //仅为示例，并非真实接口地址。
 						method:"POST",
 						data: {
 					        name:_self.name,
@@ -74,14 +71,13 @@
 							password:_self.password
 						},
 						header:{
-							'Content-Type':'application/x-www-form-urlencoded'
+							'Content-Type':'application/json'
 						}
 					}).then(res => {
-						if(res.data.code == 0){
-							plus.nativeUI.alert("注册成功,请登录", function(){
-								_self.navto('/pages/index/login')
-								}, "提示", "好的");
-						}
+						if(res.data.code == 200){
+							_self.toast("注册成功,请登录")
+							_self.navto('/pages/index/login')
+							}
 						uni.hideLoading(); 
 					}).catch(err => {
 						uni.hideLoading(); 

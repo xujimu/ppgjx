@@ -60,25 +60,24 @@
 					    title: '修改中'
 					});
 					_self.xhttp.request({
-						url: "/user/user/v1/updatePassword", //仅为示例，并非真实接口地址。
+						url: "/user/updatePassword", //仅为示例，并非真实接口地址。
 						method:"POST",
 						data: {
 							password:_self.password,
 							newPassword:_self.newPassword
 						},
 						header:{
-							'Content-Type':'application/x-www-form-urlencoded'
+							'Content-Type':'application/json'
 						}
 					}).then(res => {
 						console.log(res)	
-						if(res.data.code == 0){
+						if(res.data.code == 200){
 							_self.$store.state.user = null
 							uni.setStorageSync('user', null);	
-							plus.nativeUI.alert(res.data.message, function(){
+							_self.toast("修改成功 请重新登录")
 							uni.switchTab({
 								url: '/pages/index/my'
-							});	
-							}, "提示", "好的");						
+							});						
 						}
 						uni.hideLoading(); 
 					}).catch(err => {

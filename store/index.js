@@ -374,24 +374,32 @@ const store = new Vuex.Store({
 				display: true,
 				platform: 0
 			},
-			// ,
 			// {
-			// 	title: '测试',
-			// 	name: '/pages/functions/test/test',
-			// 	color: 'pic',
-			// 	cuIcon: 'game',
+			// 	title: '视频转GIF',
+			// 	name: '/pages/functions/VideoToGIF/VideoToGIF',
+			// 	color: 'orange',
+			// 	cuIcon: 'video',
 			// 	describe: '官方',
 			// 	display: true,
-			// 	platform: 0 //0通用1ios2andorid
-
+			// 	platform: 0
 			// }
+			{
+				title: '测试',
+				name: '/pages/functions/test/ffmpegTest',
+				color: 'pic',
+				cuIcon: 'game',
+				describe: '官方',
+				display: true,
+				platform: 0 //0通用1ios2andorid
+
+			}
 		],
 		flashlightIndex: 0,
 		flashlightSpeed: 1,
 		vibrateIndex: 0,
 		vibrateSpeed: 1,
 		platfrom: '',
-		version: '1.5.7'
+		version: '1.5.8'
 	},
 	mutations: {},
 	actions: {}

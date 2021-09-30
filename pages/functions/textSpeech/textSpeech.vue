@@ -19,7 +19,8 @@
 		</view>
 		
 		<view class="cu-form-group "> 
-			<view class="title">选择发音人</view>
+			<view class="title ">选择发音人</view>
+			<view :class="playIcon" @click="playIconF"></view>
 			<picker @change="voiceF" :value="voiceIndex" :range="voiceV" range-key="name">
 				<view class="picker">
 					{{voiceV[voiceIndex].name}}
@@ -69,9 +70,11 @@
 			_self = this
 			innerAudioContext.onPlay(() => {
 			  console.log('开始播放');
-			  _self.load = true
+			 
+			
 			})
 			innerAudioContext.onEnded(() => {
+			  _self.playIcon = 'cuIcon-playfill'
 			  console.log('结束');
 			  _self.load = false
 			})
@@ -81,6 +84,7 @@
 		  },
 		data() { 
 			return {
+				playIcon: 'cuIcon-playfill',
 				volume:50,
 				speech_rate:50,
 				pitch_rate:50,
@@ -143,6 +147,18 @@
 			}
 		},
 		methods: {
+			playIconF(){
+				if(_self.playIcon == 'cuIcon-playfill'){
+					_self.load = false
+					_self.playIcon = 'cuIcon-stop'
+					innerAudioContext.src = _self.domain + '/static/audio/text_speech/' +  _self.voiceV[_self.voiceIndex].value + '.mp3';
+					innerAudioContext.play()
+				}else{
+					_self.load = false
+					_self.playIcon = 'cuIcon-playfill'
+					innerAudioContext.stop()
+				}
+			},
 			textareaBInput(e){
 				console.log(e.detail.value)
 				_self.text = e.detail.value
@@ -155,6 +171,8 @@
 				_self.voiceIndex = e.detail.value
 			},
 			test(){
+				_self.load = true
+				_self.playIcon = 'cuIcon-playfill'
 				innerAudioContext.autoplay = true;
 				innerAudioContext.src = _self.url;
 				innerAudioContext.play()

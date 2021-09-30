@@ -8,7 +8,7 @@ App.mpType = 'app'
 //请求工具
 import Request from '@/components/luch-request/index.js' // 下载的插件
 Vue.prototype.xhttp = new Request({
-	baseURL: 'https://ppgjx.com'
+	baseURL: 'http://192.168.0.103'
 });
 
 //引入uView库
@@ -25,24 +25,13 @@ import store from './store'
 Vue.prototype.$store = store
 
 //全局域名
-Vue.prototype.domain = "https://ppgjx.com"
+Vue.prototype.domain = "http://192.168.0.103"
 
 //返回数据统一处理              json数据  是否只是弹出提示
-Vue.prototype.code = function(data,isMes){
+Vue.prototype.code = function(data){
 	
-	if(isMes){
-		plus.nativeUI.alert(data, function(){
-			}, "提示", "好的");
-	}else{
-		if(data.code == 1 || data.code == 3){
-			plus.nativeUI.alert(data.message, function(){
-				}, "提示", "好的");
-		}else{
-			plus.nativeUI.alert("服务器出错了 请重试 如仍未解决请反馈！", function(){
-				}, "提示", "好的");
-		}
-	}
-	
+	plus.nativeUI.alert(data, function(){
+		}, "提示", "好的");
 	
 }
 
@@ -72,20 +61,11 @@ Vue.prototype.hint = function(key,hint){
 	}
 }
 
-//创建目录 参数需要创建所在目录名字 创建目录名
-Vue.prototype.createDirectory = function(directoryName,name){
-	plus.io.resolveLocalFileSystemURL(directoryName, function( ent ) {
-			ent.getDirectory(name, {create:true,exclusive:false}, function( dir ){
-				console.log("创建目录成功 目录名: " + dir.name);
-				return true
-			}, function (e) {
-				console.log("创建目录失败" +  e.message );
-			} );
-		}, function ( e ) {
-			console.log( "Request file system failed: " + e.message );
-	} );
-	return false
+
+Vue.prototype.toast = function(msg){
+	plus.nativeUI.toast(msg);
 }
+
 
 //遍历目录文件 参数为目录名字 不遍历子目录
 Vue.prototype.listDirectory = function(directoryName){
@@ -103,26 +83,6 @@ Vue.prototype.listDirectory = function(directoryName){
 	} );
 }
 
-//移动文件或改名 文件名 目录名或者新文件名
-Vue.prototype.moveFile = function(fileName,name){
-	plus.io.resolveLocalFileSystemURL(fileName , function( ent ) {
-			console.log('获取目录对象成功');
-			var dc = ent
-			plus.io.resolveLocalFileSystemURL(fileName, function(entry) {
-				entry.copyTo(dc,name, function(e) {
-					console.log('移动文件成功');
-				}, function(e) { 
-					console.log('移动文件失败');
-				})
-			}, function(e) {
-				console.log('移动文件失败');
-			});
-			
-			
-		}, function ( e ) {
-			console.log( "Request file system failed: " + e.message );
-	} );
-}
 
 
 //删除文件

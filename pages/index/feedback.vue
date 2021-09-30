@@ -99,9 +99,9 @@
 					}
 				}).then(res => {
 					console.log(res)	
-					if(res.data.code == 0){
+					if(res.data.code == 200){
 						_self.query()
-						plus.nativeUI.alert(res.data.message, function() {}, "提示", "好的");
+						plus.nativeUI.alert(res.data.msg, function() {}, "提示", "好的");
 					}
 					uni.hideLoading(); 
 				}).catch(err => {
